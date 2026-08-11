@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Experiment 5 - GET and POST Methods</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #4b3f72;
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        input:focus {
+            border-color: #667eea;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .get-btn {
+            background: #667eea;
+        }
+
+        .post-btn {
+            background: #28a745;
+        }
+
+        button:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+
+        .result {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f1f5ff;
+            border-left: 5px solid #667eea;
+        }
+
+        .url-box {
+            background: #222;
+            color: #00ff88;
+            padding: 15px;
+            border-radius: 8px;
+            word-break: break-all;
+            margin-top: 10px;
+            font-family: monospace;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+        }
+
+        .observation {
+            background: #fff8dc;
+            border-left: 5px solid orange;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .info {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .box {
+                padding: 18px;
+            }
+
+            table {
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <h1>🌐 GET and POST Method Demonstration</h1>
+
+        <p class="subtitle">
+            Web Technology - Experiment 5
+        </p>
+
+
+        <!-- INTRODUCTION -->
+
+        <div class="box">
+
+            <div class="info">
+
+                <strong>Objective:</strong>
+
+                Create one form using GET and one form using POST,
+                then observe how the data is transferred.
+
+            </div>
+
+            <p>
+                HTML forms support two commonly used methods:
+                <strong>GET</strong> and <strong>POST</strong>.
+            </p>
+
+        </div>
+
+
+        <!-- GET FORM -->
+
+        <div class="box">
+
+            <h2>🔵 1. GET Method</h2>
+
+            <p>
+                GET sends form data through the URL.
+                It is commonly used for search and retrieving information.
+            </p>
+
+            <form
+                action=""
+                method="get"
+                onsubmit="showGetResult(event)"
+            >
+
+                <label for="getName">
+                    Student Name
+                </label>
+
+                <input
+                    type="text"
+                    id="getName"
+                    name="student_name"
+                    placeholder="Enter student name"
+                    required
+                >
+
+
+                <label for="getDepartment">
+                    Department
+                </label>
+
+                <input
+                    type="text"
+                    id="getDepartment"
+                    name="department"
+                    placeholder="Enter department"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="get-btn"
+                >
+                    Submit Using GET
+                </button>
+
+            </form>
+
+
+            <div
+                class="result"
+                id="getResult"
+            >
+
+                <strong>GET Data:</strong>
+
+                <div
+                    class="url-box"
+                    id="getURL"
+                ></div>
+
+                <div class="observation">
+
+                    <strong>Observation:</strong>
+
+                    The student name and department are visible
+                    in the URL after the GET request.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- POST FORM -->
+
+        <div class="box">
+
+            <h2>🟢 2. POST Method</h2>
+
+            <p>
+                POST sends form data inside the HTTP request body.
+                It is commonly used for login, registration and submitting data.
+            </p>
+
+            <form
+                action=""
+                method="post"
+                onsubmit="showPostResult(event)"
+            >
+
+                <label for="postEmail">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="postEmail"
+                    name="email"
+                    placeholder="Enter email"
+                    required
+                >
+
+
+                <label for="postPassword">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="postPassword"
+                    name="password"
+                    placeholder="Enter password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="post-btn"
+                >
+                    Submit Using POST
+                </button>
+
+            </form>
+
+
+            <div
+                class="result"
+                id="postResult"
+            >
+
+                <strong>POST Data:</strong>
+
+                <p>
+                    Email:
+                    <span id="postEmailDisplay"></span>
+                </p>
+
+                <p>
+                    Password:
+                    <span id="postPasswordDisplay"></span>
+                </p>
+
+                <div class="url-box">
+
+                    URL does not contain the form data.
+
+                </div>
+
+                <div class="observation">
+
+                    <strong>Observation:</strong>
+
+                    POST data is sent in the request body,
+                    so it does not appear in the URL.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- COMPARISON TABLE -->
+
+        <div class="box">
+
+            <h2>📊 GET vs POST</h2>
+
+            <table>
+
+                <tr>
+
+                    <th>Feature</th>
+
+                    <th>GET</th>
+
+                    <th>POST</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>Data Location</td>
+
+                    <td>URL</td>
+
+                    <td>Request Body</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Data Visibility</td>
+
+                    <td>Visible in URL</td>
+
+                    <td>Not visible in URL</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Suitable For</td>
+
+                    <td>Search / Retrieve</td>
+
+                    <td>Login / Registration</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Bookmark</td>
+
+                    <td>Possible</td>
+
+                    <td>Not normally used</td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <!-- IMPORTANT NOTE -->
+
+        <div class="box">
+
+            <h2>📌 Important Note</h2>
+
+            <p>
+                POST does <strong>not</strong> automatically encrypt data.
+                For real security, the website should use
+                <strong>HTTPS</strong>.
+            </p>
+
+            <p>
+                To observe the actual HTTP request, open
+                <strong>Browser Developer Tools → Network</strong>
+                and submit the form.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function showGetResult(event) {
+
+            event.preventDefault();
+
+            const name =
+                document.getElementById("getName").value;
+
+            const department =
+                document.getElementById("getDepartment").value;
+
+
+            const params =
+                new URLSearchParams();
+
+            params.append("student_name", name);
+
+            params.append("department", department);
+
+
+            const currentPage =
+                window.location.pathname.split("/").pop();
+
+
+            const finalURL =
+                currentPage + "?" + params.toString();
+
+
+            document.getElementById("getURL")
+                .textContent = finalURL;
+
+
+            document.getElementById("getResult")
+                .style.display = "block";
+
+
+            /*
+                In a real GET request, the browser
+                adds these values to the URL.
+
+                Example:
+
+                index.html?student_name=Ravi&department=CSE
+            */
+
+        }
+
+
+        function showPostResult(event) {
+
+            event.preventDefault();
+
+
+            const email =
+                document.getElementById("postEmail").value;
+
+            const password =
+                document.getElementById("postPassword").value;
+
+
+            document.getElementById("postEmailDisplay")
+                .textContent = email;
+
+
+            document.getElementById("postPasswordDisplay")
+                .textContent =
+                "•".repeat(password.length);
+
+
+            document.getElementById("postResult")
+                .style.display = "block";
+
+
+            /*
+                POST data is normally placed
+                inside the HTTP request body.
+
+                Therefore, it does not appear
+                in the browser URL.
+            */
+
+        }
+
+    </script>
+
+</body>
+
+</html>

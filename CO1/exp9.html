@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Observing Internet Protocols Using Browser Developer Tools</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Observing Internet Protocols Using Browser Developer Tools</h1>
+      <p>
+        Open <b>Developer Tools → Network</b> and reload the page to observe
+        <span>URL</span>, <span>protocol</span>, <span>request method</span>,
+        <span>status code</span>, <span>file type</span>, <span>size</span>, and
+        <span>loading time</span>.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>Resources to Inspect</h2>
+      <ul>
+        <li>HTML document</li>
+        <li>CSS stylesheet</li>
+        <li>External image requests</li>
+        <li>Embedded website request</li>
+        <li>Link navigation requests</li>
+      </ul>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800" alt="Ocean" />
+        <h3>Image Request</h3>
+        <p>Check file type, size, and loading time.</p>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800" alt="Forest" />
+        <h3>Another Request</h3>
+        <p>Observe the protocol and status code.</p>
+      </div>
+    </section>
+
+    <section class="links">
+      <a href="https://www.wikipedia.org/" target="_blank">Open Wikipedia</a>
+      <a href="https://www.onecompiler.com/" target="_blank">Open OneCompiler</a>
+    </section>
+
+    <footer class="footer">
+      <p>Tip: In Network tab, click any request to view headers and timing details.</p>
+    </footer>
+  </main>
+</body>
+</html>

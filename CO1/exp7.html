@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Experiment 7 - XML Student Data</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            margin-bottom: 10px;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #4b3f72;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            line-height: 1.7;
+            color: #444;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f1f3ff;
+        }
+
+        .xml-code {
+            background-color: #1e1e1e;
+            color: #00ff88;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            line-height: 1.7;
+            font-family: Consolas, monospace;
+            white-space: pre;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #667eea;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4b3f72;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+            color: green;
+        }
+
+        .structure {
+            background: #f5f6ff;
+            padding: 20px;
+            border-left: 5px solid #667eea;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .box {
+                padding: 18px;
+                overflow-x: auto;
+            }
+
+            table {
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <h1>📄 XML Student Data</h1>
+
+            <p>
+                Web Technology - Experiment 7
+            </p>
+
+        </div>
+
+
+        <!-- AIM -->
+
+        <div class="box">
+
+            <h2>🎯 Aim</h2>
+
+            <p class="description">
+
+                To create an XML document containing student
+                information such as roll number, name,
+                department, year, email and mobile number.
+
+            </p>
+
+        </div>
+
+
+        <!-- XML STRUCTURE -->
+
+        <div class="box">
+
+            <h2>🌳 XML Structure</h2>
+
+            <div class="structure">
+
+                students<br>
+                ├── student<br>
+                │ &nbsp;&nbsp;&nbsp;├── rollno<br>
+                │ &nbsp;&nbsp;&nbsp;├── name<br>
+                │ &nbsp;&nbsp;&nbsp;├── department<br>
+                │ &nbsp;&nbsp;&nbsp;├── year<br>
+                │ &nbsp;&nbsp;&nbsp;├── email<br>
+                │ &nbsp;&nbsp;&nbsp;└── mobile<br>
+                ├── student<br>
+                ├── student<br>
+                └── student
+
+            </div>
+
+        </div>
+
+
+        <!-- XML DATA -->
+
+        <div class="box">
+
+            <h2>📋 Student Records</h2>
+
+            <table>
+
+                <tr>
+
+                    <th>Roll No</th>
+
+                    <th>Name</th>
+
+                    <th>Department</th>
+
+                    <th>Year</th>
+
+                    <th>Email</th>
+
+                    <th>Mobile</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>101</td>
+
+                    <td>Raghupathy M</td>
+
+                    <td>IT</td>
+
+                    <td>III</td>
+
+                    <td>raghu@example.com</td>
+
+                    <td>9876543210</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>102</td>
+
+                    <td>Arun Kumar</td>
+
+                    <td>CSE</td>
+
+                    <td>II</td>
+
+                    <td>arun@example.com</td>
+
+                    <td>9876543211</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>103</td>
+
+                    <td>Priya Sharma</td>
+
+                    <td>AI</td>
+
+                    <td>I</td>
+
+                    <td>priya@example.com</td>
+
+                    <td>9876543212</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>104</td>
+
+                    <td>Rahul Singh</td>
+
+                    <td>ECE</td>
+
+                    <td>IV</td>
+
+                    <td>rahul@example.com</td>
+
+                    <td>9876543213</td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <!-- XML CODE -->
+
+        <div class="box">
+
+            <h2>💻 XML Document</h2>
+
+            <div class="xml-code">
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;students&gt;
+
+    &lt;student&gt;
+        &lt;rollno&gt;101&lt;/rollno&gt;
+        &lt;name&gt;Raghupathy M&lt;/name&gt;
+        &lt;department&gt;Information Technology&lt;/department&gt;
+        &lt;year&gt;III&lt;/year&gt;
+        &lt;email&gt;raghu@example.com&lt;/email&gt;
+        &lt;mobile&gt;9876543210&lt;/mobile&gt;
+    &lt;/student&gt;
+
+    &lt;student&gt;
+        &lt;rollno&gt;102&lt;/rollno&gt;
+        &lt;name&gt;Arun Kumar&lt;/name&gt;
+        &lt;department&gt;Computer Science Engineering&lt;/department&gt;
+        &lt;year&gt;II&lt;/year&gt;
+        &lt;email&gt;arun@example.com&lt;/email&gt;
+        &lt;mobile&gt;9876543211&lt;/mobile&gt;
+    &lt;/student&gt;
+
+    &lt;student&gt;
+        &lt;rollno&gt;103&lt;/rollno&gt;
+        &lt;name&gt;Priya Sharma&lt;/name&gt;
+        &lt;department&gt;Artificial Intelligence&lt;/department&gt;
+        &lt;year&gt;I&lt;/year&gt;
+        &lt;email&gt;priya@example.com&lt;/email&gt;
+        &lt;mobile&gt;9876543212&lt;/mobile&gt;
+    &lt;/student&gt;
+
+&lt;/students&gt;
+
+            </div>
+
+            <button onclick="showMessage()">
+                Show XML Information
+            </button>
+
+            <p id="message"></p>
+
+        </div>
+
+
+        <!-- ELEMENTS -->
+
+        <div class="box">
+
+            <h2>🔑 XML Elements Used</h2>
+
+            <table>
+
+                <tr>
+
+                    <th>Element</th>
+
+                    <th>Purpose</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>&lt;students&gt;</td>
+
+                    <td>Root element</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>&lt;student&gt;</td>
+
+                    <td>Stores one student record</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>&lt;rollno&gt;</td>
+
+                    <td>Stores roll number</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>&lt;name&gt;</td>
+
+                    <td>Stores student name</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>&lt;department&gt;</td>
+
+                    <td>Stores department</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>&lt;year&gt;</td>
+
+                    <td>Stores academic year</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>&lt;email&gt;</td>
+
+                    <td>Stores email address</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>&lt;mobile&gt;</td>
+
+                    <td>Stores mobile number</td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="footer">
+
+            Web Technology Lab | Experiment 7
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function showMessage() {
+
+            document.getElementById("message").textContent =
+                "✓ XML student data is displayed successfully!";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

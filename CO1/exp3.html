@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Timetable</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#74ebd5,#9face6);
+    padding:40px;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+h1{
+    text-align:center;
+    color:#003366;
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    text-align:center;
+}
+
+caption{
+    font-size:24px;
+    font-weight:bold;
+    color:#003366;
+    margin-bottom:15px;
+}
+
+th{
+    background:#1565c0;
+    color:white;
+    padding:12px;
+}
+
+td{
+    padding:12px;
+    background:#f8f9fa;
+}
+
+tr:nth-child(even){
+    background:#e3f2fd;
+}
+
+td:hover{
+    background:#ffe082;
+}
+
+.break{
+    background:#ff7043;
+    color:white;
+    font-weight:bold;
+}
+
+.lab{
+    background:#c8e6c9;
+}
+
+.theory{
+    background:#fff9c4;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>College Class Timetable</h1>
+
+<table border="2" cellpadding="10" cellspacing="5">
+
+<caption>B.Tech Information Technology - III Year</caption>
+
+<tr>
+<th>Day</th>
+<th>9:00-10:00</th>
+<th>10:00-11:00</th>
+<th>11:00-11:15</th>
+<th>11:15-12:15</th>
+<th>12:15-1:15</th>
+<th>1:15-2:00</th>
+<th>2:00-4:00</th>
+</tr>
+
+<tr>
+<th>Monday</th>
+<td class="theory">Web Technology</td>
+<td class="theory">Operating System</td>
+<td rowspan="5" class="break">BREAK</td>
+<td class="theory">DBMS</td>
+<td class="theory">Computer Networks</td>
+<td rowspan="5" class="break">LUNCH</td>
+<td rowspan="2" class="lab">WT Laboratory</td>
+</tr>
+
+<tr>
+<th>Tuesday</th>
+<td class="theory">Python</td>
+<td class="theory">DBMS</td>
+<td class="theory">Mathematics</td>
+<td class="theory">Web Technology</td>
+</tr>
+
+<tr>
+<th>Wednesday</th>
+<td colspan="2" class="lab">DBMS Laboratory</td>
+<td class="theory">Operating System</td>
+<td class="theory">Python</td>
+<td class="theory">Sports</td>
+</tr>
+
+<tr>
+<th>Thursday</th>
+<td class="theory">Computer Networks</td>
+<td class="theory">Mathematics</td>
+<td colspan="2" class="lab">Mini Project</td>
+<td class="theory">Library</td>
+</tr>
+
+<tr>
+<th>Friday</th>
+<td class="theory">Web Technology</td>
+<td class="theory">Python</td>
+<td class="theory">DBMS</td>
+<td class="theory">Operating System</td>
+<td class="lab">Placement Training</td>
+</tr>
+
+</table>
+
+</div>
+
+</body>
+</html>

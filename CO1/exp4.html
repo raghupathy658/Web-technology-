@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Registration Form</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#6dd5ed,#2193b0);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:550px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+h1{
+    text-align:center;
+    color:#0d47a1;
+    margin-bottom:25px;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=date],
+select,
+textarea{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#2193b0;
+    box-shadow:0 0 8px rgba(33,147,176,0.5);
+}
+
+textarea{
+    resize:none;
+}
+
+.gender,
+.hobbies{
+    margin-top:8px;
+}
+
+.gender label,
+.hobbies label{
+    display:inline;
+    font-weight:normal;
+    margin-right:15px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:space-between;
+    margin-top:25px;
+}
+
+button{
+    width:48%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.submit{
+    background:#28a745;
+}
+
+.submit:hover{
+    background:#218838;
+}
+
+.reset{
+    background:#dc3545;
+}
+
+.reset:hover{
+    background:#c82333;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Student Registration Form</h1>
+
+<form action="#" method="post">
+
+<label>Student Name</label>
+<input type="text" placeholder="Enter your name" required>
+
+<label>Password</label>
+<input type="password" placeholder="Enter password" required>
+
+<label>Email Address</label>
+<input type="email" placeholder="Enter your email" required>
+
+<label>Date of Birth</label>
+<input type="date">
+
+<label>Gender</label>
+
+<div class="gender">
+<input type="radio" name="gender"> Male
+&nbsp;&nbsp;
+<input type="radio" name="gender"> Female
+&nbsp;&nbsp;
+<input type="radio" name="gender"> Other
+</div>
+
+<label>Department</label>
+
+<select required>
+<option value="">-- Select Department --</option>
+<option>Information Technology</option>
+<option>Computer Science Engineering</option>
+<option>Electronics and Communication</option>
+<option>Mechanical Engineering</option>
+<option>Civil Engineering</option>
+</select>
+
+<label>Hobbies</label>
+
+<div class="hobbies">
+<input type="checkbox"> Reading
+&nbsp;
+<input type="checkbox"> Coding
+&nbsp;
+<input type="checkbox"> Sports
+&nbsp;
+<input type="checkbox"> Music
+</div>
+
+<label>Address</label>
+
+<textarea rows="4" placeholder="Enter your address"></textarea>
+
+<div class="buttons">
+
+<button type="submit" class="submit">Register</button>
+
+<button type="reset" class="reset">Clear</button>
+
+</div>
+
+</form>
+
+</div>
+
+</body>
+</html>
