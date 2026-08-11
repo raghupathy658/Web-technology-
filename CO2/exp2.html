@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Registration Form</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 15px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+        }
+
+        /* Main Container */
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Header */
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            margin: 0 0 8px;
+            color: #4b3f72;
+        }
+
+        .header p {
+            color: #777;
+            margin: 0;
+        }
+
+        /* Form Group */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .required {
+            color: red;
+        }
+
+        /* Input Fields */
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Valid and Invalid Fields */
+
+        input.valid,
+        select.valid,
+        textarea.valid {
+            border-color: green;
+        }
+
+        input.invalid,
+        select.invalid,
+        textarea.invalid {
+            border-color: red;
+        }
+
+        /* Error Message */
+
+        .error {
+            display: block;
+            color: red;
+            font-size: 13px;
+            margin-top: 5px;
+            min-height: 16px;
+        }
+
+        /* Radio Buttons */
+
+        .radio-group {
+            display: flex;
+            gap: 25px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: normal;
+        }
+
+        .radio-option input {
+            width: auto;
+        }
+
+        /* Checkbox */
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-weight: normal;
+        }
+
+        /* Buttons */
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        button {
+            flex: 1;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn {
+            background-color: #667eea;
+            color: white;
+        }
+
+        .submit-btn:hover {
+            background-color: #4b3f72;
+        }
+
+        .reset-btn {
+            background-color: #eeeeee;
+            color: #333;
+        }
+
+        .reset-btn:hover {
+            background-color: #cccccc;
+        }
+
+        /* Success Message */
+
+        #successMessage {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f8e8;
+            border: 1px solid green;
+            border-radius: 8px;
+            color: green;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px 10px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="container">
+
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <h1>🎓 Student Registration</h1>
+
+            <p>
+                Please enter your details carefully
+            </p>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <form id="registrationForm">
+
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label for="name">
+                    Student Name <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your full name"
+                >
+
+                <span
+                    id="nameError"
+                    class="error"
+                ></span>
+
+            </div>
+
+
+            <!-- REGISTER NUMBER -->
+
+            <div class="form-group">
+
+                <label for="registerNumber">
+                    Register Number <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="registerNumber"
+                    placeholder="Example: 24IT001"
+                >
+
+                <span
+                    id="registerError"
+                    class="error"
+                ></span>
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="email"
+                    placeholder="example@gmail.com"
+                >
+
+                <span
+                    id="emailError"
+                    class="error"
+                ></span>
+
+            </div>
+
+
+            <!-- PHONE -->
+
+            <div class="form-group">
+
+                <label for="phone">
+                    Mobile Number <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="phone"
+                    placeholder="10 digit mobile number"
+                >
+
+                <span
+                    id="phoneError"
+                    class="error"
+                ></span>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password <span class="required">*</span>
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Minimum 8 characters"
+                >
+
+                <span
+                    id="passwordError"
+                    class="error"
+                ></span>
+
+            </div>
+
+
+            <!-- GENDER -->
+
+            <div class="form-group">
+
+                <label>
+                    Gender <span class="required">*</span>
+                </label>
+
+                <div class="radio-group">
+
+                    <label class="radio-option">
+
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Male"
+                        >
+
+                        Male
+
+                    </label>
+
+
+                    <label class="radio-option">
+
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Female"
+                        >
+
+                        Female
+
+                    </label>
+
+
+                    <label class="radio-option">
+
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Other"
+                        >
+
+                        Other
+
+                    </label>
+
+                </div>
+
+                <span
+                    id="genderError"
+                    class="error"
+                ></span>
+
+            </div>
+
+
+            <!-- DEPARTMENT -->
+
+            <div class="form-group">
+
+                <label for="department">
+                    Department <span class="required">*</span>
+                </label>
+
+                <select id="department">
+
+                    <option value="">
+                        -- Select Department --
+                    </option>
+
+                    <option value="IT">
+                        Information Technology
+                    </option>
+
+                    <option value="CSE">
+                        Computer Science Engineering
+                    </option>
+
+                    <option value="AI">
+                        Artificial Intelligence
+                    </option>
+
+                    <option value="ECE">
+                        Electronics and Communication
+                    </option>
+
+                    <option value="EEE">
+                        Electrical and Electronics
+                    </option>
+
+                </select>
+
+                <span
+                    id="departmentError"
+                    class="error"
+                ></span>
+
+            </div>
+
+
+            <!-- ADDRESS -->
+
+            <div class="form-group">
+
+                <label for="address">
+                    Address <span class="required">*</span>
+                </label>
+
+                <textarea
+                    id="address"
+                    rows="4"
+                    placeholder="Enter your address"
+                ></textarea>
+
+                <span
+                    id="addressError"
+                    class="error"
+                ></span>
+
+            </div>
+
+
+            <!-- DECLARATION -->
+
+            <div class="form-group">
+
+                <div class="checkbox-group">
+
+                    <input
+                        type="checkbox"
+                        id="declaration"
+                    >
+
+                    <label for="declaration">
+
+                        I confirm that the information provided
+                        is correct.
+
+                    </label>
+
+                </div>
+
+                <span
+                    id="declarationError"
+                    class="error"
+                ></span>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="buttons">
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                >
+                    Register
+                </button>
+
+                <button
+                    type="reset"
+                    class="reset-btn"
+                    id="resetButton"
+                >
+                    Clear
+                </button>
+
+            </div>
+
+
+        </form>
+
+
+        <!-- SUCCESS MESSAGE -->
+
+        <div id="successMessage">
+
+            ✅ Registration Successful!
+
+            <br>
+
+            Your student details have been validated successfully.
+
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+
+        /* ==========================================
+           GET HTML ELEMENTS USING DOM
+           ========================================== */
+
+        const form =
+            document.getElementById("registrationForm");
+
+        const nameInput =
+            document.getElementById("name");
+
+        const registerInput =
+            document.getElementById("registerNumber");
+
+        const emailInput =
+            document.getElementById("email");
+
+        const phoneInput =
+            document.getElementById("phone");
+
+        const passwordInput =
+            document.getElementById("password");
+
+        const departmentInput =
+            document.getElementById("department");
+
+        const addressInput =
+            document.getElementById("address");
+
+        const declarationInput =
+            document.getElementById("declaration");
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+
+        /* ==========================================
+           REGULAR EXPRESSIONS
+           ========================================== */
+
+        // Name: letters and spaces only
+
+        const namePattern =
+            /^[A-Za-z ]{3,40}$/;
+
+
+        // Register number: example 24IT001
+
+        const registerPattern =
+            /^[0-9]{2}[A-Za-z]{2}[0-9]{3}$/;
+
+
+        // Email validation
+
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+        // Indian mobile number
+
+        const phonePattern =
+            /^[6-9][0-9]{9}$/;
+
+
+        // Password:
+        // Minimum 8 characters,
+        // one uppercase,
+        // one lowercase,
+        // one number
+
+        const passwordPattern =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$/;
+
+
+        /* ==========================================
+           ERROR MESSAGE FUNCTION
+           ========================================== */
+
+        function setError(input, errorId, message) {
+
+            input.classList.remove("valid");
+
+            input.classList.add("invalid");
+
+            document.getElementById(errorId).textContent =
+                message;
+
+        }
+
+
+        /* ==========================================
+           SUCCESS FIELD FUNCTION
+           ========================================== */
+
+        function setValid(input, errorId) {
+
+            input.classList.remove("invalid");
+
+            input.classList.add("valid");
+
+            document.getElementById(errorId).textContent =
+                "";
+
+        }
+
+
+        /* ==========================================
+           NAME VALIDATION
+           ========================================== */
+
+        function validateName() {
+
+            const value =
+                nameInput.value.trim();
+
+            if (value === "") {
+
+                setError(
+                    nameInput,
+                    "nameError",
+                    "Name is required."
+                );
+
+                return false;
+
+            }
+
+            if (!namePattern.test(value)) {
+
+                setError(
+                    nameInput,
+                    "nameError",
+                    "Enter a valid name using letters only."
+                );
+
+                return false;
+
+            }
+
+            setValid(nameInput, "nameError");
+
+            return true;
+
+        }
+
+
+        /* ==========================================
+           REGISTER NUMBER VALIDATION
+           ========================================== */
+
+        function validateRegisterNumber() {
+
+            const value =
+                registerInput.value.trim();
+
+            if (value === "") {
+
+                setError(
+                    registerInput,
+                    "registerError",
+                    "Register number is required."
+                );
+
+                return false;
+
+            }
+
+            if (!registerPattern.test(value)) {
+
+                setError(
+                    registerInput,
+                    "registerError",
+                    "Format must be like 24IT001."
+                );
+
+                return false;
+
+            }
+
+            setValid(
+                registerInput,
+                "registerError"
+            );
+
+            return true;
+
+        }
+
+
+        /* ==========================================
+           EMAIL VALIDATION
+           ========================================== */
+
+        function validateEmail() {
+
+            const value =
+                emailInput.value.trim();
+
+            if (value === "") {
+
+                setError(
+                    emailInput,
+                    "emailError",
+                    "Email is required."
+                );
+
+                return false;
+
+            }
+
+            if (!emailPattern.test(value)) {
+
+                setError(
+                    emailInput,
+                    "emailError",
+                    "Enter a valid email address."
+                );
+
+                return false;
+
+            }
+
+            setValid(emailInput, "emailError");
+
+            return true;
+
+        }
+
+
+        /* ==========================================
+           PHONE VALIDATION
+           ========================================== */
+
+        function validatePhone() {
+
+            const value =
+                phoneInput.value.trim();
+
+            if (value === "") {
+
+                setError(
+                    phoneInput,
+                    "phoneError",
+                    "Mobile number is required."
+                );
+
+                return false;
+
+            }
+
+            if (!phonePattern.test(value)) {
+
+                setError(
+                    phoneInput,
+                    "phoneError",
+                    "Enter a valid 10-digit mobile number."
+                );
+
+                return false;
+
+            }
+
+            setValid(phoneInput, "phoneError");
+
+            return true;
+
+        }
+
+
+        /* ==========================================
+           PASSWORD VALIDATION
+           ========================================== */
+
+        function validatePassword() {
+
+            const value =
+                passwordInput.value;
+
+            if (value === "") {
+
+                setError(
+                    passwordInput,
+                    "passwordError",
+                    "Password is required."
+                );
+
+                return false;
+
+            }
+
+            if (!passwordPattern.test(value)) {
+
+                setError(
+                    passwordInput,
+                    "passwordError",
+                    "Use 8+ characters with uppercase, lowercase and number."
+                );
+
+                return false;
+
+            }
+
+            setValid(
+                passwordInput,
+                "passwordError"
+            );
+
+            return true;
+
+        }
+
+
+        /* ==========================================
+           GENDER VALIDATION
+           ========================================== */
+
+        function validateGender() {
+
+            const gender =
+                document.querySelector(
+                    'input[name="gender"]:checked'
+                );
+
+            const error =
+                document.getElementById("genderError");
+
+            if (!gender) {
+
+                error.textContent =
+                    "Please select your gender.";
+
+                return false;
+
+            }
+
+            error.textContent = "";
+
+            return true;
+
+        }
+
+
+        /* ==========================================
+           DEPARTMENT VALIDATION
+           ========================================== */
+
+        function validateDepartment() {
+
+            if (departmentInput.value === "") {
+
+                setError(
+                    departmentInput,
+                    "departmentError",
+                    "Please select a department."
+                );
+
+                return false;
+
+            }
+
+            setValid(
+                departmentInput,
+                "departmentError"
+            );
+
+            return true;
+
+        }
+
+
+        /* ==========================================
+           ADDRESS VALIDATION
+           ========================================== */
+
+        function validateAddress() {
+
+            const value =
+                addressInput.value.trim();
+
+            if (value.length < 10) {
+
+                setError(
+                    addressInput,
+                    "addressError",
+                    "Address must contain at least 10 characters."
+                );
+
+                return false;
+
+            }
+
+            setValid(
+                addressInput,
+                "addressError"
+            );
+
+            return true;
+
+        }
+
+
+        /* ==========================================
+           DECLARATION VALIDATION
+           ========================================== */
+
+        function validateDeclaration() {
+
+            const error =
+                document.getElementById(
+                    "declarationError"
+                );
+
+            if (!declarationInput.checked) {
+
+                error.textContent =
+                    "Please accept the declaration.";
+
+                return false;
+
+            }
+
+            error.textContent = "";
+
+            return true;
+
+        }
+
+
+        /* ==========================================
+           FORM SUBMIT EVENT
+           ========================================== */
+
+        form.addEventListener(
+            "submit",
+            function(event) {
+
+                // Prevent page refresh
+
+                event.preventDefault();
+
+
+                // Validate every field
+
+                const validName =
+                    validateName();
+
+                const validRegister =
+                    validateRegisterNumber();
+
+                const validEmail =
+                    validateEmail();
+
+                const validPhone =
+                    validatePhone();
+
+                const validPassword =
+                    validatePassword();
+
+                const validGender =
+                    validateGender();
+
+                const validDepartment =
+                    validateDepartment();
+
+                const validAddress =
+                    validateAddress();
+
+                const validDeclaration =
+                    validateDeclaration();
+
+
+                // Check all results
+
+                if (
+                    validName &&
+                    validRegister &&
+                    validEmail &&
+                    validPhone &&
+                    validPassword &&
+                    validGender &&
+                    validDepartment &&
+                    validAddress &&
+                    validDeclaration
+                ) {
+
+                    successMessage.style.display =
+                        "block";
+
+                    successMessage.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                } else {
+
+                    successMessage.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
+
+        /* ==========================================
+           REAL-TIME VALIDATION
+           ========================================== */
+
+        nameInput.addEventListener(
+            "input",
+            validateName
+        );
+
+        registerInput.addEventListener(
+            "input",
+            validateRegisterNumber
+        );
+
+        emailInput.addEventListener(
+            "input",
+            validateEmail
+        );
+
+        phoneInput.addEventListener(
+            "input",
+            validatePhone
+        );
+
+        passwordInput.addEventListener(
+            "input",
+            validatePassword
+        );
+
+        departmentInput.addEventListener(
+            "change",
+            validateDepartment
+        );
+
+        addressInput.addEventListener(
+            "input",
+            validateAddress
+        );
+
+
+        /* ==========================================
+           RESET EVENT
+           ========================================== */
+
+        document
+            .getElementById("resetButton")
+            .addEventListener(
+                "click",
+                function() {
+
+                    successMessage.style.display =
+                        "none";
+
+
+                    const inputs =
+                        document.querySelectorAll(
+                            "input, select, textarea"
+                        );
+
+
+                    inputs.forEach(
+                        function(input) {
+
+                            input.classList.remove(
+                                "valid",
+                                "invalid"
+                            );
+
+                        }
+                    );
+
+
+                    const errors =
+                        document.querySelectorAll(
+                            ".error"
+                        );
+
+
+                    errors.forEach(
+                        function(error) {
+
+                            error.textContent = "";
+
+                        }
+                    );
+
+                }
+            );
+
+
+    </script>
+
+</body>
+
+</html>33

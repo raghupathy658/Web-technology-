@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scientific Calculator</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .calculator {
+            width: 100%;
+            max-width: 420px;
+            background-color: #1e1e2f;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        .title {
+            text-align: center;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .title h1 {
+            margin: 0;
+            font-size: 25px;
+        }
+
+        .title p {
+            color: #bbbbcc;
+            margin: 5px 0;
+            font-size: 13px;
+        }
+
+        /* DISPLAY */
+
+        #display {
+            width: 100%;
+            height: 70px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+            background-color: #101018;
+            color: white;
+            font-size: 28px;
+            text-align: right;
+            outline: none;
+        }
+
+        /* BUTTON GRID */
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        button {
+            height: 55px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+
+        button:hover {
+            transform: scale(1.04);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .number {
+            background-color: #343448;
+            color: white;
+        }
+
+        .operator {
+            background-color: #667eea;
+            color: white;
+        }
+
+        .scientific {
+            background-color: #45455d;
+            color: #ffffff;
+        }
+
+        .clear {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .equal {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .delete {
+            background-color: #e67e22;
+            color: white;
+        }
+
+        .history {
+            margin-top: 15px;
+            padding: 12px;
+            background-color: #101018;
+            border-radius: 10px;
+            color: #bbbbcc;
+            font-size: 13px;
+            min-height: 35px;
+            text-align: center;
+        }
+
+        @media (max-width: 450px) {
+
+            .calculator {
+                padding: 15px;
+            }
+
+            button {
+                height: 50px;
+                font-size: 14px;
+            }
+
+            #display {
+                height: 60px;
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="calculator">
+
+
+        <!-- TITLE -->
+
+        <div class="title">
+
+            <h1>🧮 Scientific Calculator</h1>
+
+            <p>Web Technology - Experiment 3</p>
+
+        </div>
+
+
+        <!-- DISPLAY -->
+
+        <input
+            type="text"
+            id="display"
+            value="0"
+            readonly
+        >
+
+
+        <!-- BUTTONS -->
+
+        <div class="buttons">
+
+
+            <!-- ROW 1 -->
+
+            <button
+                class="scientific"
+                onclick="calculateFunction('sin')"
+            >
+                sin
+            </button>
+
+            <button
+                class="scientific"
+                onclick="calculateFunction('cos')"
+            >
+                cos
+            </button>
+
+            <button
+                class="scientific"
+                onclick="calculateFunction('tan')"
+            >
+                tan
+            </button>
+
+            <button
+                class="clear"
+                onclick="clearDisplay()"
+            >
+                AC
+            </button>
+
+
+            <!-- ROW 2 -->
+
+            <button
+                class="scientific"
+                onclick="calculateFunction('sqrt')"
+            >
+                √
+            </button>
+
+            <button
+                class="scientific"
+                onclick="calculateFunction('square')"
+            >
+                x²
+            </button>
+
+            <button
+                class="scientific"
+                onclick="calculateFunction('log')"
+            >
+                log
+            </button>
+
+            <button
+                class="delete"
+                onclick="deleteLast()"
+            >
+                DEL
+            </button>
+
+
+            <!-- ROW 3 -->
+
+            <button
+                class="scientific"
+                onclick="calculateFunction('ln')"
+            >
+                ln
+            </button>
+
+            <button
+                class="scientific"
+                onclick="calculateFunction('abs')"
+            >
+                |x|
+            </button>
+
+            <button
+                class="scientific"
+                onclick="calculateFunction('factorial')"
+            >
+                x!
+            </button>
+
+            <button
+                class="operator"
+                onclick="appendOperator('/')"
+            >
+                ÷
+            </button>
+
+
+            <!-- ROW 4 -->
+
+            <button
+                class="number"
+                onclick="appendNumber('7')"
+            >
+                7
+            </button>
+
+            <button
+                class="number"
+                onclick="appendNumber('8')"
+            >
+                8
+            </button>
+
+            <button
+                class="number"
+                onclick="appendNumber('9')"
+            >
+                9
+            </button>
+
+            <button
+                class="operator"
+                onclick="appendOperator('*')"
+            >
+                ×
+            </button>
+
+
+            <!-- ROW 5 -->
+
+            <button
+                class="number"
+                onclick="appendNumber('4')"
+            >
+                4
+            </button>
+
+            <button
+                class="number"
+                onclick="appendNumber('5')"
+            >
+                5
+            </button>
+
+            <button
+                class="number"
+                onclick="appendNumber('6')"
+            >
+                6
+            </button>
+
+            <button
+                class="operator"
+                onclick="appendOperator('-')"
+            >
+                −
+            </button>
+
+
+            <!-- ROW 6 -->
+
+            <button
+                class="number"
+                onclick="appendNumber('1')"
+            >
+                1
+            </button>
+
+            <button
+                class="number"
+                onclick="appendNumber('2')"
+            >
+                2
+            </button>
+
+            <button
+                class="number"
+                onclick="appendNumber('3')"
+            >
+                3
+            </button>
+
+            <button
+                class="operator"
+                onclick="appendOperator('+')"
+            >
+                +
+            </button>
+
+
+            <!-- ROW 7 -->
+
+            <button
+                class="number"
+                onclick="appendNumber('0')"
+            >
+                0
+            </button>
+
+            <button
+                class="number"
+                onclick="appendNumber('.')"
+            >
+                .
+            </button>
+
+            <button
+                class="scientific"
+                onclick="appendOperator('**')"
+            >
+                xʸ
+            </button>
+
+            <button
+                class="equal"
+                onclick="calculate()"
+            >
+                =
+            </button>
+
+
+        </div>
+
+
+        <!-- HISTORY -->
+
+        <div
+            class="history"
+            id="history"
+        >
+            Ready
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+        /* =========================================
+           GET DISPLAY ELEMENT
+           ========================================= */
+
+        const display =
+            document.getElementById("display");
+
+        const history =
+            document.getElementById("history");
+
+
+        /* =========================================
+           ADD NUMBERS
+           ========================================= */
+
+        function appendNumber(number) {
+
+            if (display.value === "0") {
+
+                display.value = number;
+
+            } else {
+
+                display.value += number;
+
+            }
+
+        }
+
+
+        /* =========================================
+           ADD OPERATORS
+           ========================================= */
+
+        function appendOperator(operator) {
+
+            const lastCharacter =
+                display.value.slice(-1);
+
+            // Prevent multiple operators
+
+            if (
+                ["+", "-", "*", "/", "**"]
+                .includes(lastCharacter)
+            ) {
+                return;
+            }
+
+            display.value += operator;
+
+        }
+
+
+        /* =========================================
+           CLEAR DISPLAY
+           ========================================= */
+
+        function clearDisplay() {
+
+            display.value = "0";
+
+            history.textContent = "Ready";
+
+        }
+
+
+        /* =========================================
+           DELETE LAST CHARACTER
+           ========================================= */
+
+        function deleteLast() {
+
+            if (display.value.length <= 1) {
+
+                display.value = "0";
+
+            } else {
+
+                display.value =
+                    display.value.slice(0, -1);
+
+            }
+
+        }
+
+
+        /* =========================================
+           BASIC CALCULATION
+           ========================================= */
+
+        function calculate() {
+
+            try {
+
+                const expression =
+                    display.value;
+
+                /*
+                 * eval() evaluates the arithmetic
+                 * expression entered by the user.
+                 */
+
+                const result =
+                    eval(expression);
+
+                display.value =
+                    Number(result.toFixed(10));
+
+                history.textContent =
+                    expression + " = " + display.value;
+
+            }
+
+            catch (error) {
+
+                display.value = "Error";
+
+                history.textContent =
+                    "Invalid expression";
+
+            }
+
+        }
+
+
+        /* =========================================
+           SCIENTIFIC FUNCTIONS
+           ========================================= */
+
+        function calculateFunction(type) {
+
+            try {
+
+                const number =
+                    parseFloat(display.value);
+
+                let result;
+
+
+                switch (type) {
+
+
+                    /* SIN */
+
+                    case "sin":
+
+                        result =
+                            Math.sin(
+                                number * Math.PI / 180
+                            );
+
+                        break;
+
+
+                    /* COS */
+
+                    case "cos":
+
+                        result =
+                            Math.cos(
+                                number * Math.PI / 180
+                            );
+
+                        break;
+
+
+                    /* TAN */
+
+                    case "tan":
+
+                        result =
+                            Math.tan(
+                                number * Math.PI / 180
+                            );
+
+                        break;
+
+
+                    /* SQUARE ROOT */
+
+                    case "sqrt":
+
+                        if (number < 0) {
+
+                            throw new Error();
+
+                        }
+
+                        result =
+                            Math.sqrt(number);
+
+                        break;
+
+
+                    /* SQUARE */
+
+                    case "square":
+
+                        result =
+                            Math.pow(number, 2);
+
+                        break;
+
+
+                    /* LOG BASE 10 */
+
+                    case "log":
+
+                        if (number <= 0) {
+
+                            throw new Error();
+
+                        }
+
+                        result =
+                            Math.log10(number);
+
+                        break;
+
+
+                    /* NATURAL LOG */
+
+                    case "ln":
+
+                        if (number <= 0) {
+
+                            throw new Error();
+
+                        }
+
+                        result =
+                            Math.log(number);
+
+                        break;
+
+
+                    /* ABSOLUTE VALUE */
+
+                    case "abs":
+
+                        result =
+                            Math.abs(number);
+
+                        break;
+
+
+                    /* FACTORIAL */
+
+                    case "factorial":
+
+                        if (
+                            number < 0 ||
+                            !Number.isInteger(number)
+                        ) {
+
+                            throw new Error();
+
+                        }
+
+                        result =
+                            factorial(number);
+
+                        break;
+
+
+                    default:
+
+                        throw new Error();
+
+                }
+
+
+                display.value =
+                    Number(result.toFixed(10));
+
+                history.textContent =
+                    type + "(" + number + ") = "
+                    + display.value;
+
+            }
+
+            catch (error) {
+
+                display.value =
+                    "Error";
+
+                history.textContent =
+                    "Invalid operation";
+
+            }
+
+        }
+
+
+        /* =========================================
+           FACTORIAL FUNCTION
+           ========================================= */
+
+        function factorial(number) {
+
+            let result = 1;
+
+
+            for (
+                let i = 1;
+                i <= number;
+                i++
+            ) {
+
+                result *= i;
+
+            }
+
+
+            return result;
+
+        }
+
+
+        /* =========================================
+           KEYBOARD SUPPORT
+           ========================================= */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                const key =
+                    event.key;
+
+
+                if (
+                    /[0-9.]/.test(key)
+                ) {
+
+                    appendNumber(key);
+
+                }
+
+
+                else if (
+                    ["+", "-", "*", "/"]
+                    .includes(key)
+                ) {
+
+                    appendOperator(key);
+
+                }
+
+
+                else if (key === "Enter") {
+
+                    calculate();
+
+                }
+
+
+                else if (key === "Backspace") {
+
+                    deleteLast();
+
+                }
+
+
+                else if (key === "Escape") {
+
+                    clearDisplay();
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

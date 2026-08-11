@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Profile</title>
+
+    <style>
+
+        /* ---------- GENERAL STYLING ---------- */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #333333;
+        }
+
+
+        /* ---------- MAIN PROFILE BOX ---------- */
+
+        .profile-container {
+            width: 90%;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: white;
+            border: 3px solid #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+
+        /* ---------- HEADER ---------- */
+
+        .profile-header {
+            text-align: center;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #dddddd;
+        }
+
+        .profile-header h1 {
+            margin: 15px 0 5px;
+            color: #4b3f72;
+            font-size: 32px;
+        }
+
+        .profile-header p {
+            margin: 5px;
+            color: #777777;
+            font-size: 17px;
+        }
+
+
+        /* ---------- PROFILE IMAGE ---------- */
+
+        .profile-image {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #667eea;
+            padding: 4px;
+            background-color: white;
+        }
+
+
+        /* ---------- INFORMATION SECTION ---------- */
+
+        .section {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #f7f8ff;
+            border: 1px solid #dddddd;
+            border-radius: 12px;
+        }
+
+        .section h2 {
+            margin-top: 0;
+            color: #4b3f72;
+            border-left: 5px solid #667eea;
+            padding-left: 10px;
+        }
+
+
+        /* ---------- INFORMATION TABLE ---------- */
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .info-table td {
+            padding: 12px;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .info-table td:first-child {
+            width: 35%;
+            font-weight: bold;
+            color: #4b3f72;
+        }
+
+
+        /* ---------- SKILLS ---------- */
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .skill {
+            background-color: #667eea;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+
+        /* ---------- HOBBIES ---------- */
+
+        .hobbies {
+            padding-left: 25px;
+            line-height: 2;
+        }
+
+
+        /* ---------- CONTACT ---------- */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* ---------- FOOTER ---------- */
+
+        .footer {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px solid #dddddd;
+            text-align: center;
+            color: #777777;
+        }
+
+
+        /* ---------- RESPONSIVE DESIGN ---------- */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .profile-container {
+                width: 100%;
+                margin: 10px auto;
+                padding: 20px;
+                border-radius: 12px;
+            }
+
+            .profile-header h1 {
+                font-size: 25px;
+            }
+
+            .profile-header p {
+                font-size: 14px;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .section {
+                padding: 15px;
+            }
+
+            .info-table td {
+                display: block;
+                width: 100% !important;
+            }
+
+            .skills {
+                justify-content: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- MAIN PROFILE CONTAINER -->
+
+    <div class="profile-container">
+
+
+        <!-- PROFILE HEADER -->
+
+        <header class="profile-header">
+
+            <img
+                class="profile-image"
+                src="https://i.pravatar.cc/300?img=12"
+                alt="Student Profile Photo"
+            >
+
+            <h1>Raghupathy M</h1>
+
+            <p>B.Tech Information Technology</p>
+
+            <p>Student Profile</p>
+
+        </header>
+
+
+        <!-- ABOUT SECTION -->
+
+        <section class="section">
+
+            <h2>About Me</h2>
+
+            <p>
+                Hello! I am a B.Tech Information Technology student
+                interested in web development, programming and
+                modern technologies.
+            </p>
+
+            <p>
+                I enjoy learning new technologies and developing
+                creative and interactive web applications.
+            </p>
+
+        </section>
+
+
+        <!-- PERSONAL INFORMATION -->
+
+        <section class="section">
+
+            <h2>Personal Information</h2>
+
+            <table class="info-table">
+
+                <tr>
+
+                    <td>Name</td>
+
+                    <td>Raghupathy M</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Department</td>
+
+                    <td>Information Technology</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Course</td>
+
+                    <td>B.Tech IT</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Year</td>
+
+                    <td>First Year</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>College</td>
+
+                    <td>ABC College of Engineering</td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- SKILLS SECTION -->
+
+        <section class="section">
+
+            <h2>My Skills</h2>
+
+            <div class="skills">
+
+                <span class="skill">HTML</span>
+
+                <span class="skill">CSS</span>
+
+                <span class="skill">JavaScript</span>
+
+                <span class="skill">Java</span>
+
+                <span class="skill">Python</span>
+
+                <span class="skill">Web Development</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOBBIES SECTION -->
+
+        <section class="section">
+
+            <h2>My Hobbies</h2>
+
+            <ul class="hobbies">
+
+                <li>💻 Coding</li>
+
+                <li>🌐 Web Designing</li>
+
+                <li>🎮 Gaming</li>
+
+                <li>🎵 Listening to Music</li>
+
+                <li>📚 Learning New Technologies</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- CONTACT SECTION -->
+
+        <section class="section contact">
+
+            <h2>Contact Me</h2>
+
+            <p>
+                📧 Email:
+                <a href="mailto:student@example.com">
+                    student@example.com
+                </a>
+            </p>
+
+            <p>
+                📱 Phone: +91 98765 43210
+            </p>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <p>
+                © 2026 Student Profile | Web Technology Lab
+            </p>
+
+        </footer>
+
+
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ABC College of Technology</title>
+
+    <style>
+
+        /* =========================================
+           BASIC RESET
+           ========================================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+            color: #333;
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           HEADER
+           ========================================= */
+
+        header {
+            background: linear-gradient(135deg, #172554, #2563eb);
+            color: white;
+            padding: 25px 6%;
+            position: relative;
+        }
+
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+
+        .college-name h1 {
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+
+        .college-name p {
+            color: #dbeafe;
+        }
+
+
+        /* Small badge demonstrating positioning */
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            background-color: #facc15;
+            color: #172554;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+
+        /* =========================================
+           NAVIGATION BAR
+           ========================================= */
+
+        nav {
+            background-color: #0f172a;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+
+        nav li {
+            margin: 0;
+        }
+
+
+        nav a {
+            display: block;
+            padding: 15px 22px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+
+        nav a:hover {
+            background-color: #2563eb;
+        }
+
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+
+        .hero {
+            min-height: 420px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(15, 23, 42, 0.72),
+                    rgba(37, 99, 235, 0.72)
+                ),
+                url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        .hero-content {
+            max-width: 750px;
+            color: white;
+        }
+
+
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+
+        .hero-button {
+            display: inline-block;
+            padding: 13px 25px;
+            background-color: #facc15;
+            color: #172554;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+
+        .hero-button:hover {
+            transform: translateY(-3px);
+            background-color: white;
+        }
+
+
+        /* =========================================
+           COMMON SECTION
+           ========================================= */
+
+        section {
+            padding: 60px 6%;
+        }
+
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+
+        .section-title h2 {
+            color: #172554;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+
+        .section-title p {
+            color: #666;
+        }
+
+
+        /* =========================================
+           ABOUT SECTION - FLEXBOX
+           ========================================= */
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+
+        .about-image {
+            flex: 1;
+        }
+
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            display: block;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .about-text {
+            flex: 1;
+            padding: 10px;
+        }
+
+
+        .about-text h3 {
+            color: #2563eb;
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+
+        .about-text p {
+            margin-bottom: 12px;
+        }
+
+
+        /* =========================================
+           COURSE SECTION - CSS GRID
+           ========================================= */
+
+        .course-grid {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .course-card {
+            background-color: white;
+            padding: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+        }
+
+
+        .course-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .course-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+
+        .course-card h3 {
+            color: #172554;
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================================
+           FACILITIES - CSS GRID
+           ========================================= */
+
+        .facility-grid {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .facility {
+            background-color: #172554;
+            color: white;
+            padding: 25px 15px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+
+        .facility span {
+            display: block;
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================================
+           ADMISSION / CALL TO ACTION
+           ========================================= */
+
+        .admission {
+            background-color: #dbeafe;
+            text-align: center;
+        }
+
+
+        .admission h2 {
+            color: #172554;
+            margin-bottom: 10px;
+        }
+
+
+        .admission p {
+            max-width: 700px;
+            margin: auto auto 20px;
+        }
+
+
+        .admission-button {
+            display: inline-block;
+            background-color: #2563eb;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+
+        footer {
+            background-color: #0f172a;
+            color: white;
+            padding: 35px 6%;
+        }
+
+
+        .footer-container {
+            max-width: 1100px;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+
+        .footer-box {
+            flex: 1;
+            min-width: 200px;
+        }
+
+
+        .footer-box h3 {
+            margin-bottom: 10px;
+            color: #60a5fa;
+        }
+
+
+        .footer-box p {
+            color: #cbd5e1;
+        }
+
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #334155;
+            margin-top: 25px;
+            padding-top: 20px;
+            color: #94a3b8;
+        }
+
+
+        /* =========================================
+           RESPONSIVE DESIGN
+           ========================================= */
+
+        @media (max-width: 900px) {
+
+            .course-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .facility-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .about-container {
+                flex-direction: column;
+            }
+
+
+            .about-image,
+            .about-text {
+                width: 100%;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 20px;
+            }
+
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+
+            .college-name h1 {
+                font-size: 23px;
+            }
+
+
+            .badge {
+                position: static;
+                display: inline-block;
+                margin-top: 10px;
+            }
+
+
+            nav ul {
+                flex-direction: column;
+            }
+
+
+            nav {
+                position: static;
+            }
+
+
+            nav a {
+                width: 100%;
+                text-align: center;
+                padding: 11px;
+            }
+
+
+            .hero {
+                min-height: 350px;
+                padding: 40px 15px;
+            }
+
+
+            .hero h2 {
+                font-size: 30px;
+            }
+
+
+            .hero p {
+                font-size: 15px;
+            }
+
+
+            section {
+                padding: 40px 20px;
+            }
+
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .facility-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .about-container {
+                gap: 20px;
+            }
+
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         HEADER
+         ========================================= -->
+
+    <header>
+
+        <div class="badge">
+            EST. 1995
+        </div>
+
+
+        <div class="header-content">
+
+            <div class="college-name">
+
+                <h1>🎓 ABC College of Technology</h1>
+
+                <p>
+                    Excellence in Education & Innovation
+                </p>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         NAVIGATION
+         ========================================= -->
+
+    <nav>
+
+        <ul>
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="#facilities">Facilities</a>
+            </li>
+
+            <li>
+                <a href="#admission">Admissions</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+         ========================================= -->
+
+    <main>
+
+
+        <!-- HERO -->
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <h2>
+                    Build Your Future With Us
+                </h2>
+
+                <p>
+                    Empowering students with knowledge,
+                    technology and innovation for a better
+                    tomorrow.
+                </p>
+
+                <a
+                    href="#admission"
+                    class="hero-button"
+                >
+                    Explore Admissions
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+
+        <section id="about">
+
+            <div class="section-title">
+
+                <h2>About Our College</h2>
+
+                <p>
+                    Learn more about our institution
+                </p>
+
+            </div>
+
+
+            <div class="about-container">
+
+
+                <div class="about-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=900&q=80"
+                        alt="College Campus"
+                    >
+
+                </div>
+
+
+                <div class="about-text">
+
+                    <h3>
+                        A Place to Learn and Grow
+                    </h3>
+
+                    <p>
+                        ABC College of Technology is committed
+                        to providing quality education and
+                        creating opportunities for students
+                        to develop their technical and
+                        professional skills.
+                    </p>
+
+                    <p>
+                        Our experienced faculty, modern
+                        infrastructure and industry-oriented
+                        curriculum help students prepare
+                        for successful careers.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- COURSES -->
+
+        <section id="courses">
+
+            <div class="section-title">
+
+                <h2>Our Courses</h2>
+
+                <p>
+                    Explore our popular undergraduate programs
+                </p>
+
+            </div>
+
+
+            <div class="course-grid">
+
+
+                <article class="course-card">
+
+                    <div class="course-icon">
+                        💻
+                    </div>
+
+                    <h3>
+                        Computer Science
+                    </h3>
+
+                    <p>
+                        Learn programming, software development,
+                        databases and computer technologies.
+                    </p>
+
+                </article>
+
+
+                <article class="course-card">
+
+                    <div class="course-icon">
+                        🤖
+                    </div>
+
+                    <h3>
+                        Artificial Intelligence
+                    </h3>
+
+                    <p>
+                        Explore machine learning, AI,
+                        data science and intelligent systems.
+                    </p>
+
+                </article>
+
+
+                <article class="course-card">
+
+                    <div class="course-icon">
+                        📡
+                    </div>
+
+                    <h3>
+                        Electronics
+                    </h3>
+
+                    <p>
+                        Study electronics, communication systems
+                        and modern embedded technologies.
+                    </p>
+
+                </article>
+
+
+                <article class="course-card">
+
+                    <div class="course-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        Electrical Engineering
+                    </h3>
+
+                    <p>
+                        Learn electrical systems, power
+                        engineering and automation.
+                    </p>
+
+                </article>
+
+
+                <article class="course-card">
+
+                    <div class="course-icon">
+                        ⚙️
+                    </div>
+
+                    <h3>
+                        Mechanical Engineering
+                    </h3>
+
+                    <p>
+                        Develop skills in design, manufacturing
+                        and mechanical systems.
+                    </p>
+
+                </article>
+
+
+                <article class="course-card">
+
+                    <div class="course-icon">
+                        🏗️
+                    </div>
+
+                    <h3>
+                        Civil Engineering
+                    </h3>
+
+                    <p>
+                        Learn construction, structural design
+                        and infrastructure development.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- FACILITIES -->
+
+        <section id="facilities">
+
+            <div class="section-title">
+
+                <h2>Campus Facilities</h2>
+
+                <p>
+                    Everything students need for a great
+                    learning experience
+                </p>
+
+            </div>
+
+
+            <div class="facility-grid">
+
+
+                <div class="facility">
+
+                    <span>📚</span>
+
+                    <h3>Digital Library</h3>
+
+                </div>
+
+
+                <div class="facility">
+
+                    <span>💻</span>
+
+                    <h3>Computer Labs</h3>
+
+                </div>
+
+
+                <div class="facility">
+
+                    <span>🏃</span>
+
+                    <h3>Sports Ground</h3>
+
+                </div>
+
+
+                <div class="facility">
+
+                    <span>🏠</span>
+
+                    <h3>Hostel</h3>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- ADMISSION -->
+
+        <section
+            class="admission"
+            id="admission"
+        >
+
+            <h2>
+                Admissions Open for 2026
+            </h2>
+
+            <p>
+                Start your journey towards a successful
+                career. Apply today and become part of
+                our growing student community.
+            </p>
+
+            <a
+                href="#contact"
+                class="admission-button"
+            >
+                Contact Admissions
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer id="contact">
+
+
+        <div class="footer-container">
+
+
+            <div class="footer-box">
+
+                <h3>
+                    ABC College
+                </h3>
+
+                <p>
+                    Excellence in Education & Innovation.
+                </p>
+
+            </div>
+
+
+            <div class="footer-box">
+
+                <h3>
+                    Contact
+                </h3>
+
+                <p>
+                    📍 Chennai, Tamil Nadu
+                </p>
+
+                <p>
+                    📞 +91 98765 43210
+                </p>
+
+            </div>
+
+
+            <div class="footer-box">
+
+                <h3>
+                    Email
+                </h3>
+
+                <p>
+                    info@abccollege.edu
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            <p>
+                © 2026 ABC College of Technology.
+                All Rights Reserved.
+            </p>
+
+        </div>
+
+
+    </footer>
+
+
+</body>
+
+</html>

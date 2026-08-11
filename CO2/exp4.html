@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Result Analysis System</title>
+
+    <style>
+
+        /* ---------- BASIC RESET ---------- */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 25px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            color: #333;
+        }
+
+
+        /* ---------- MAIN CONTAINER ---------- */
+
+        .container {
+            width: 95%;
+            max-width: 1000px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+        }
+
+
+        /* ---------- HEADER ---------- */
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #4b3f72;
+        }
+
+        .header p {
+            color: #777;
+        }
+
+
+        /* ---------- FORM ---------- */
+
+        .form-box {
+            background-color: #f5f6ff;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            margin-bottom: 25px;
+        }
+
+        .form-box h2 {
+            margin-top: 0;
+            color: #4b3f72;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 11px;
+            border: 2px solid #ddd;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+
+        /* ---------- BUTTON ---------- */
+
+        .button-area {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background-color: #667eea;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4b3f72;
+        }
+
+
+        /* ---------- RESULT TABLE ---------- */
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th {
+            background-color: #667eea;
+            color: white;
+            padding: 13px;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+
+        tr:hover {
+            background-color: #eeeeff;
+        }
+
+
+        /* ---------- ANALYSIS CARDS ---------- */
+
+        .analysis {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .card {
+            padding: 18px;
+            text-align: center;
+            border-radius: 12px;
+            background-color: #f5f6ff;
+            border: 1px solid #ddd;
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .card p {
+            margin: 0;
+            color: #4b3f72;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+
+        /* ---------- STATUS ---------- */
+
+        .pass {
+            color: green;
+            font-weight: bold;
+        }
+
+        .fail {
+            color: red;
+            font-weight: bold;
+        }
+
+
+        /* ---------- MESSAGE ---------- */
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+            min-height: 20px;
+        }
+
+
+        /* ---------- RESPONSIVE ---------- */
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .analysis {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 450px) {
+
+            .analysis {
+                grid-template-columns: 1fr;
+            }
+
+            th,
+            td {
+                font-size: 13px;
+                padding: 8px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="container">
+
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <h1>🎓 Student Result Analysis System</h1>
+
+            <p>
+                Enter student marks to calculate the result
+            </p>
+
+        </div>
+
+
+        <!-- INPUT FORM -->
+
+        <div class="form-box">
+
+            <h2>Enter Student Details</h2>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Student Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter student name"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="registerNumber">
+                        Register Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="registerNumber"
+                        placeholder="Example: 24IT001"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="web">
+                        Web Technology
+                    </label>
+
+                    <input
+                        type="number"
+                        id="web"
+                        placeholder="0 - 100"
+                        min="0"
+                        max="100"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="java">
+                        Java
+                    </label>
+
+                    <input
+                        type="number"
+                        id="java"
+                        placeholder="0 - 100"
+                        min="0"
+                        max="100"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="python">
+                        Python
+                    </label>
+
+                    <input
+                        type="number"
+                        id="python"
+                        placeholder="0 - 100"
+                        min="0"
+                        max="100"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="maths">
+                        Mathematics
+                    </label>
+
+                    <input
+                        type="number"
+                        id="maths"
+                        placeholder="0 - 100"
+                        min="0"
+                        max="100"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="physics">
+                        Physics
+                    </label>
+
+                    <input
+                        type="number"
+                        id="physics"
+                        placeholder="0 - 100"
+                        min="0"
+                        max="100"
+                    >
+
+                </div>
+
+
+            </div>
+
+
+            <div class="button-area">
+
+                <button onclick="calculateResult()">
+                    📊 Analyze Result
+                </button>
+
+            </div>
+
+
+            <p id="message"></p>
+
+        </div>
+
+
+        <!-- RESULT TABLE -->
+
+        <div class="table-container">
+
+            <h2>📋 Student Result</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Subject</th>
+
+                        <th>Mark</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="resultTable">
+
+                    <tr>
+
+                        <td colspan="3">
+                            Enter marks and click
+                            "Analyze Result"
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- ANALYSIS -->
+
+        <div class="analysis">
+
+
+            <div class="card">
+
+                <h3>Total Marks</h3>
+
+                <p id="total">-</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Average</h3>
+
+                <p id="average">-</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Highest Mark</h3>
+
+                <p id="highest">-</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Lowest Mark</h3>
+
+                <p id="lowest">-</p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- FINAL RESULT -->
+
+        <div class="analysis">
+
+
+            <div class="card">
+
+                <h3>Grade</h3>
+
+                <p id="grade">-</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Result</h3>
+
+                <p id="finalResult">-</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Subjects Passed</h3>
+
+                <p id="passed">-</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Subjects Failed</h3>
+
+                <p id="failed">-</p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+
+        /* ==========================================
+           MAIN FUNCTION
+           ========================================== */
+
+        function calculateResult() {
+
+
+            /* ---------- GET STUDENT DETAILS ---------- */
+
+            const name =
+                document.getElementById("name").value.trim();
+
+            const registerNumber =
+                document
+                    .getElementById("registerNumber")
+                    .value.trim();
+
+
+            /* ---------- GET MARKS ---------- */
+
+            const web =
+                Number(document.getElementById("web").value);
+
+            const java =
+                Number(document.getElementById("java").value);
+
+            const python =
+                Number(document.getElementById("python").value);
+
+            const maths =
+                Number(document.getElementById("maths").value);
+
+            const physics =
+                Number(document.getElementById("physics").value);
+
+
+            /* ---------- VALIDATION ---------- */
+
+            if (
+                name === "" ||
+                registerNumber === ""
+            ) {
+
+                showMessage(
+                    "Please enter student name and register number.",
+                    "red"
+                );
+
+                return;
+
+            }
+
+
+            const marks =
+                [web, java, python, maths, physics];
+
+
+            for (let i = 0; i < marks.length; i++) {
+
+                if (
+                    marks[i] < 0 ||
+                    marks[i] > 100 ||
+                    isNaN(marks[i])
+                ) {
+
+                    showMessage(
+                        "All marks must be between 0 and 100.",
+                        "red"
+                    );
+
+                    return;
+
+                }
+
+            }
+
+
+            /* ==========================================
+               JAVASCRIPT ARRAY OF OBJECTS
+               ========================================== */
+
+            const subjects = [
+
+                {
+                    name: "Web Technology",
+                    mark: web
+                },
+
+                {
+                    name: "Java",
+                    mark: java
+                },
+
+                {
+                    name: "Python",
+                    mark: python
+                },
+
+                {
+                    name: "Mathematics",
+                    mark: maths
+                },
+
+                {
+                    name: "Physics",
+                    mark: physics
+                }
+
+            ];
+
+
+            /* ==========================================
+               ARRAY OF MARKS
+               ========================================== */
+
+            const markArray = subjects.map(
+                subject => subject.mark
+            );
+
+
+            /* ==========================================
+               TOTAL
+               ========================================== */
+
+            let total = 0;
+
+
+            for (let i = 0; i < markArray.length; i++) {
+
+                total += markArray[i];
+
+            }
+
+
+            /* ==========================================
+               AVERAGE
+               ========================================== */
+
+            const average =
+                total / markArray.length;
+
+
+            /* ==========================================
+               MAXIMUM AND MINIMUM
+               ========================================== */
+
+            const highest =
+                Math.max(...markArray);
+
+            const lowest =
+                Math.min(...markArray);
+
+
+            /* ==========================================
+               PASS / FAIL
+               ========================================== */
+
+            let passed = 0;
+
+            let failed = 0;
+
+
+            subjects.forEach(
+                function(subject) {
+
+                    if (subject.mark >= 40) {
+
+                        passed++;
+
+                    } else {
+
+                        failed++;
+
+                    }
+
+                }
+            );
+
+
+            /* ==========================================
+               GRADE
+               ========================================== */
+
+            let grade;
+
+
+            if (failed > 0) {
+
+                grade = "F";
+
+            }
+
+            else if (average >= 90) {
+
+                grade = "A+";
+
+            }
+
+            else if (average >= 80) {
+
+                grade = "A";
+
+            }
+
+            else if (average >= 70) {
+
+                grade = "B";
+
+            }
+
+            else if (average >= 60) {
+
+                grade = "C";
+
+            }
+
+            else if (average >= 50) {
+
+                grade = "D";
+
+            }
+
+            else {
+
+                grade = "F";
+
+            }
+
+
+            /* ==========================================
+               FINAL RESULT
+               ========================================== */
+
+            let finalResult;
+
+
+            if (failed === 0) {
+
+                finalResult = "PASS";
+
+            } else {
+
+                finalResult = "FAIL";
+
+            }
+
+
+            /* ==========================================
+               DISPLAY RESULT TABLE
+               ========================================== */
+
+            const resultTable =
+                document.getElementById("resultTable");
+
+
+            resultTable.innerHTML = "";
+
+
+            for (
+                let i = 0;
+                i < subjects.length;
+                i++
+            ) {
+
+                const subject =
+                    subjects[i];
+
+
+                const row =
+                    document.createElement("tr");
+
+
+                const status =
+                    subject.mark >= 40
+                        ? "PASS"
+                        : "FAIL";
+
+
+                const statusClass =
+                    subject.mark >= 40
+                        ? "pass"
+                        : "fail";
+
+
+                row.innerHTML = `
+
+                    <td>${subject.name}</td>
+
+                    <td>${subject.mark}</td>
+
+                    <td class="${statusClass}">
+                        ${status}
+                    </td>
+
+                `;
+
+
+                resultTable.appendChild(row);
+
+            }
+
+
+            /* ==========================================
+               UPDATE ANALYSIS CARDS
+               ========================================== */
+
+            document.getElementById("total")
+                .textContent =
+                total + " / 500";
+
+
+            document.getElementById("average")
+                .textContent =
+                average.toFixed(2) + "%";
+
+
+            document.getElementById("highest")
+                .textContent =
+                highest;
+
+
+            document.getElementById("lowest")
+                .textContent =
+                lowest;
+
+
+            document.getElementById("grade")
+                .textContent =
+                grade;
+
+
+            const finalResultElement =
+                document.getElementById("finalResult");
+
+
+            finalResultElement.textContent =
+                finalResult;
+
+
+            finalResultElement.style.color =
+                finalResult === "PASS"
+                    ? "green"
+                    : "red";
+
+
+            document.getElementById("passed")
+                .textContent =
+                passed;
+
+
+            document.getElementById("failed")
+                .textContent =
+                failed;
+
+
+            /* ==========================================
+               SUCCESS MESSAGE
+               ========================================== */
+
+            showMessage(
+                "Result analyzed successfully for " +
+                name +
+                " (" +
+                registerNumber +
+                ").",
+                "green"
+            );
+
+        }
+
+
+        /* ==========================================
+           MESSAGE FUNCTION
+           ========================================== */
+
+        function showMessage(text, color) {
+
+            const message =
+                document.getElementById("message");
+
+
+            message.textContent = text;
+
+            message.style.color = color;
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

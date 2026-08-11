@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Digital Clock & Exam Countdown</title>
+
+    <style>
+
+        /* ===============================
+           BASIC RESET
+        =============================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #667eea,
+                    #764ba2
+                );
+        }
+
+
+        /* ===============================
+           MAIN CONTAINER
+        =============================== */
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+
+            background-color: white;
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0, 0, 0, 0.25);
+        }
+
+
+        /* ===============================
+           HEADER
+        =============================== */
+
+        .header {
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+
+        .header h1 {
+            color: #4b3f72;
+
+            margin-bottom: 8px;
+        }
+
+
+        .header p {
+            color: #777;
+        }
+
+
+        /* ===============================
+           MAIN CARDS
+        =============================== */
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .card {
+            background-color: #f8f9ff;
+
+            border: 1px solid #e0e3f5;
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            text-align: center;
+        }
+
+
+        .card h2 {
+            color: #4b3f72;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* ===============================
+           DIGITAL CLOCK
+        =============================== */
+
+        #clock {
+            font-size: 42px;
+
+            font-weight: bold;
+
+            color: #667eea;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 10px;
+        }
+
+
+        #date {
+            color: #666;
+
+            font-size: 16px;
+        }
+
+
+        /* ===============================
+           COUNTDOWN
+        =============================== */
+
+        .countdown {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 8px;
+
+            margin-top: 15px;
+        }
+
+
+        .time-box {
+            background-color: #667eea;
+
+            color: white;
+
+            padding: 15px 5px;
+
+            border-radius: 8px;
+        }
+
+
+        .time-box span {
+            display: block;
+
+            font-size: 28px;
+
+            font-weight: bold;
+        }
+
+
+        .time-box small {
+            font-size: 11px;
+        }
+
+
+        #examStatus {
+            margin-top: 18px;
+
+            font-weight: bold;
+
+            color: #555;
+        }
+
+
+        /* ===============================
+           EXAM DETAILS
+        =============================== */
+
+        .exam-info {
+            margin-top: 20px;
+
+            padding: 12px;
+
+            background-color: white;
+
+            border-radius: 8px;
+
+            border: 1px solid #ddd;
+
+            color: #555;
+        }
+
+
+        /* ===============================
+           FOOTER
+        =============================== */
+
+        .footer {
+            text-align: center;
+
+            margin-top: 25px;
+
+            color: #888;
+
+            font-size: 13px;
+        }
+
+
+        /* ===============================
+           RESPONSIVE DESIGN
+        =============================== */
+
+        @media (max-width: 650px) {
+
+            .container {
+                padding: 20px;
+            }
+
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+
+            #clock {
+                font-size: 32px;
+            }
+
+
+            .time-box span {
+                font-size: 22px;
+            }
+
+        }
+
+
+        @media (max-width: 400px) {
+
+            .countdown {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================
+         MAIN CONTAINER
+    ================================== -->
+
+    <div class="container">
+
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <h1>
+                ⏰ Digital Clock & Exam Countdown
+            </h1>
+
+            <p>
+                Web Technology - Experiment 8
+            </p>
+
+        </div>
+
+
+        <!-- =================================
+             CARDS
+        ================================== -->
+
+        <div class="cards">
+
+
+            <!-- =============================
+                 DIGITAL CLOCK
+            ============================== -->
+
+            <div class="card">
+
+                <h2>
+                    🕐 Current Time
+                </h2>
+
+
+                <div id="clock">
+                    00:00:00
+                </div>
+
+
+                <div id="date">
+                    Loading date...
+                </div>
+
+            </div>
+
+
+            <!-- =============================
+                 EXAM COUNTDOWN
+            ============================== -->
+
+            <div class="card">
+
+                <h2>
+                    📚 Examination Countdown
+                </h2>
+
+
+                <div class="countdown">
+
+
+                    <div class="time-box">
+
+                        <span id="days">
+                            00
+                        </span>
+
+                        <small>
+                            DAYS
+                        </small>
+
+                    </div>
+
+
+                    <div class="time-box">
+
+                        <span id="hours">
+                            00
+                        </span>
+
+                        <small>
+                            HOURS
+                        </small>
+
+                    </div>
+
+
+                    <div class="time-box">
+
+                        <span id="minutes">
+                            00
+                        </span>
+
+                        <small>
+                            MINUTES
+                        </small>
+
+                    </div>
+
+
+                    <div class="time-box">
+
+                        <span id="seconds">
+                            00
+                        </span>
+
+                        <small>
+                            SECONDS
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+                <p id="examStatus">
+                    Calculating...
+                </p>
+
+
+                <div class="exam-info">
+
+                    <strong>
+                        Examination:
+                    </strong>
+
+                    Web Technology Practical Exam
+
+                    <br>
+
+                    <strong>
+                        Date:
+                    </strong>
+
+                    31 December 2026
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer">
+
+            Digital clock updates every second using
+            JavaScript Date object and setInterval().
+
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+
+        /* =========================================
+           DIGITAL CLOCK
+        ========================================= */
+
+        function updateClock() {
+
+
+            /*
+             * Create a new Date object.
+             * It contains the current date and time.
+             */
+
+            const now = new Date();
+
+
+            /* Get hours */
+
+            let hours =
+                now.getHours();
+
+
+            /* Get minutes */
+
+            let minutes =
+                now.getMinutes();
+
+
+            /* Get seconds */
+
+            let seconds =
+                now.getSeconds();
+
+
+            /* Convert 24-hour format to 12-hour */
+
+            let period = "AM";
+
+
+            if (hours >= 12) {
+
+                period = "PM";
+
+            }
+
+
+            if (hours === 0) {
+
+                hours = 12;
+
+            }
+
+            else if (hours > 12) {
+
+                hours -= 12;
+
+            }
+
+
+            /* Add leading zero */
+
+            hours =
+                String(hours).padStart(2, "0");
+
+            minutes =
+                String(minutes).padStart(2, "0");
+
+            seconds =
+                String(seconds).padStart(2, "0");
+
+
+            /* Create time string */
+
+            const currentTime =
+                hours +
+                ":" +
+                minutes +
+                ":" +
+                seconds +
+                " " +
+                period;
+
+
+            /* Update clock */
+
+            document.getElementById("clock")
+                .textContent =
+                currentTime;
+
+
+            /* =================================
+               DATE
+            ================================= */
+
+
+            const day =
+                now.getDate();
+
+
+            const month =
+                now.toLocaleString(
+                    "en-US",
+                    {
+                        month: "long"
+                    }
+                );
+
+
+            const year =
+                now.getFullYear();
+
+
+            const weekday =
+                now.toLocaleString(
+                    "en-US",
+                    {
+                        weekday: "long"
+                    }
+                );
+
+
+            const dateText =
+                weekday +
+                ", " +
+                month +
+                " " +
+                day +
+                ", " +
+                year;
+
+
+            document.getElementById("date")
+                .textContent =
+                dateText;
+
+        }
+
+
+        /* =========================================
+           EXAMINATION DATE
+        ========================================= */
+
+        /*
+         * Change this date if required.
+         *
+         * Format:
+         * YYYY-MM-DDTHH:MM:SS
+         */
+
+        const examDate =
+            new Date(
+                "2026-12-31T09:00:00"
+            ).getTime();
+
+
+        /* =========================================
+           COUNTDOWN FUNCTION
+        ========================================= */
+
+        function updateCountdown() {
+
+
+            /* Current time */
+
+            const now =
+                new Date().getTime();
+
+
+            /* Difference */
+
+            const difference =
+                examDate - now;
+
+
+            /* =================================
+               CHECK IF EXAM DATE ARRIVED
+            ================================= */
+
+            if (difference <= 0) {
+
+
+                document.getElementById("days")
+                    .textContent = "00";
+
+
+                document.getElementById("hours")
+                    .textContent = "00";
+
+
+                document.getElementById("minutes")
+                    .textContent = "00";
+
+
+                document.getElementById("seconds")
+                    .textContent = "00";
+
+
+                document.getElementById(
+                    "examStatus"
+                ).textContent =
+                    "🎓 Examination time has arrived!";
+
+
+                return;
+
+            }
+
+
+            /* =================================
+               CALCULATE TIME
+            ================================= */
+
+            const days =
+                Math.floor(
+                    difference /
+                    (1000 * 60 * 60 * 24)
+                );
+
+
+            const hours =
+                Math.floor(
+                    (difference %
+                        (1000 * 60 * 60 * 24)) /
+                    (1000 * 60 * 60)
+                );
+
+
+            const minutes =
+                Math.floor(
+                    (difference %
+                        (1000 * 60 * 60)) /
+                    (1000 * 60)
+                );
+
+
+            const seconds =
+                Math.floor(
+                    (difference %
+                        (1000 * 60)) /
+                    1000
+                );
+
+
+            /* =================================
+               UPDATE HTML
+            ================================= */
+
+            document.getElementById("days")
+                .textContent =
+                String(days).padStart(2, "0");
+
+
+            document.getElementById("hours")
+                .textContent =
+                String(hours).padStart(2, "0");
+
+
+            document.getElementById("minutes")
+                .textContent =
+                String(minutes).padStart(2, "0");
+
+
+            document.getElementById("seconds")
+                .textContent =
+                String(seconds).padStart(2, "0");
+
+
+            document.getElementById(
+                "examStatus"
+            ).textContent =
+                "⏳ Time remaining for examination";
+
+        }
+
+
+        /* =========================================
+           RUN FUNCTIONS
+        ========================================= */
+
+        updateClock();
+
+        updateCountdown();
+
+
+        /* =========================================
+           setInterval()
+        ========================================= */
+
+        /*
+         * updateClock() runs every 1 second.
+         */
+
+        setInterval(
+            updateClock,
+            1000
+        );
+
+
+        /*
+         * updateCountdown() runs every 1 second.
+         */
+
+        setInterval(
+            updateCountdown,
+            1000
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
