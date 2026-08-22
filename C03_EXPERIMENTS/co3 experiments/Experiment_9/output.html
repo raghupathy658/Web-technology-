@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 9 - Lifecycle Monitor</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background-color: #0f172a; color: #f8fafc; padding: 2rem; }
+    .card { max-width: 750px; margin: 1rem auto; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    h2 { color: #6366f1; border-bottom: 2px solid rgba(99,102,241,0.3); padding-bottom: 0.5rem; margin-bottom: 1.5rem; font-size: 1.6rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .metric-box { background: rgba(15,23,42,0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.25rem; text-align: center; }
+    .metric-val { font-size: 2rem; font-weight: 800; color: #38bdf8; }
+    .metric-lbl { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; font-weight: 600; margin-top: 0.25rem; }
+    .info-box { background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); border-radius: 8px; padding: 1.25rem; margin-bottom: 1.5rem; line-height: 1.6; font-size: 0.92rem; }
+    .btn { display: inline-block; padding: 0.65rem 1.25rem; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Experiment 9: Servlet Lifecycle Phase Monitor</h2>
+    
+    <div class="info-box">
+      <strong style="color:#a5b4fc; font-size:1rem; display:block; margin-bottom:0.4rem;">Observed Lifecycle Rules:</strong>
+      Refresh this browser page (F5) multiple times. Notice that <strong>service() Count</strong> and <strong>doGet() Count</strong> increment on every request, but <strong>Constructor Count</strong> and <strong>init() Count</strong> remain fixed at <strong>1</strong> because Tomcat creates only ONE instance of the Servlet!
+    </div>
+
+    <div class="grid-4">
+      <div class="metric-box">
+        <div class="metric-val" style="color:#a5b4fc;">1</div>
+        <div class="metric-lbl">Constructor</div>
+      </div>
+
+      <div class="metric-box">
+        <div class="metric-val" style="color:#34d399;">1</div>
+        <div class="metric-lbl">init() Executed</div>
+      </div>
+
+      <div class="metric-box">
+        <div class="metric-val" style="color:#38bdf8;">12</div>
+        <div class="metric-lbl">service() Count</div>
+      </div>
+
+      <div class="metric-box">
+        <div class="metric-val" style="color:#f472b6;">12</div>
+        <div class="metric-lbl">doGet() Count</div>
+      </div>
+    </div>
+
+    <div style="background:rgba(15,23,42,0.6); padding:1rem; border-radius:8px; margin-bottom:1.5rem; font-size:0.9rem;">
+      <div><strong>Servlet Instantiated At:</strong> 02:49:15 PM</div>
+      <div style="margin-top:0.3rem;"><strong>destroy() Status:</strong> <span style="color:#fbbf24;">Active (destroy() executes on Tomcat shutdown/redeploy)</span></div>
+    </div>
+
+    <div style="display:flex; gap:1rem;">
+      <a href="output.html" class="btn">🔄 Trigger doGet</a>
+      <a href="index.html" class="btn" style="background:#334155;">← Back to Index</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 5 - Feature Detection & Fallbacks</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Experiment 5: Feature Detection & Fallback Techniques</h1>
+
+    <div class="grid-3">
+      <!-- Feature 1: localStorage -->
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.1rem;">localStorage</h3>
+          <span id="badgeLocalStorage" class="badge badge-success">CHECKING...</span>
+        </div>
+        <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.75rem;">Persists data in browser storage or uses JS memory object fallback.</p>
+        
+        <input type="text" id="prefInput" value="Dark Mode Preference">
+        <button type="button" id="btnTestStorage">Test localStorage</button>
+        <div id="storageOutput" style="font-size: 0.85rem; font-family: monospace; color: #38bdf8; margin-top: 0.5rem;">Value: None</div>
+      </div>
+
+      <!-- Feature 2: querySelector -->
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.1rem;">querySelector()</h3>
+          <span id="badgeQuerySelector" class="badge badge-success">CHECKING...</span>
+        </div>
+        <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.75rem;">Uses querySelector or falls back to getElementById.</p>
+        
+        <button type="button" id="btnTestQuery">Test Selector Execution</button>
+        <div id="queryOutput" style="font-size: 0.85rem; font-family: monospace; color: #34d399; margin-top: 0.5rem;">Status: Ready</div>
+      </div>
+
+      <!-- Feature 3: CSS @supports -->
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.1rem;">CSS @supports</h3>
+          <span id="badgeCssSupports" class="badge badge-success">CHECKING...</span>
+        </div>
+        <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.5rem;">Tests CSS backdrop-filter feature support.</p>
+        
+        <div class="supports-test-box">
+          <small id="supportsText" style="font-size: 0.8rem; font-weight: bold;">Evaluating CSS feature query...</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Browser Compatibility Report Table -->
+    <div class="panel">
+      <h2>Browser Compatibility Matrix</h2>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Supported</th>
+            <th>Fallback Strategy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>localStorage</strong></td>
+            <td><span id="tableLocalStorage" class="badge badge-success">Supported</span></td>
+            <td id="fallbackLocalStorageText">Standard window.localStorage API</td>
+          </tr>
+          <tr>
+            <td><strong>querySelector()</strong></td>
+            <td><span id="tableQuerySelector" class="badge badge-success">Supported</span></td>
+            <td id="fallbackQuerySelectorText">Standard document.querySelector API</td>
+          </tr>
+          <tr>
+            <td><strong>CSS backdrop-filter</strong></td>
+            <td><span id="tableCssSupports" class="badge badge-success">Supported</span></td>
+            <td id="fallbackCssSupportsText">Modern backdrop-filter glassmorphism style</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Output Screenshot Preview -->
+    <div class="panel" style="margin-top: 2rem;">
+      <h2 style="color: #6366f1;">Captured Output Screenshot</h2>
+      <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">Feature Detection & Fallback Compatibility Matrix rendered snapshot:</p>
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden;">
+        <img src="output.png" alt="Experiment 5 Output" style="width: 100%; display: block; border-radius: 8px;">
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

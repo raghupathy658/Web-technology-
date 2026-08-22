@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 7 - Student Registration Form</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background-color: #0f172a; color: #f8fafc; padding: 2rem; }
+    .card { max-width: 550px; margin: 1rem auto; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    h2 { color: #6366f1; margin-bottom: 1.5rem; border-bottom: 2px solid rgba(99,102,241,0.3); padding-bottom: 0.5rem; }
+    .form-group { margin-bottom: 1.2rem; display: flex; flex-direction: column; gap: 0.3rem; }
+    label { font-size: 0.9rem; font-weight: 600; color: #94a3b8; }
+    input, select { padding: 0.65rem 0.9rem; font-size: 0.95rem; background: #0f172a; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #f8fafc; }
+    .btn { padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; }
+    .btn:hover { background: linear-gradient(135deg, #4f46e5, #7c3aed); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Experiment 7: Student Registration Form</h2>
+    <form action="register" method="POST">
+      <div class="form-group">
+        <label for="studentName">Student Name *</label>
+        <input type="text" id="studentName" name="studentName" placeholder="Enter student full name">
+      </div>
+
+      <div class="form-group">
+        <label for="regNo">Register Number *</label>
+        <input type="text" id="regNo" name="regNo" placeholder="Enter register number">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" placeholder="student@college.edu">
+      </div>
+
+      <div class="form-group">
+        <label for="department">Department *</label>
+        <select id="department" name="department">
+          <option value="">-- Select Department --</option>
+          <option value="Computer Science & Engineering">Computer Science & Eng</option>
+          <option value="Information Technology">Information Technology</option>
+          <option value="AI & Data Science">AI & Data Science</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="semester">Semester *</label>
+        <select id="semester" name="semester">
+          <option value="">-- Select Semester --</option>
+          <option value="Semester 1">Semester 1</option>
+          <option value="Semester 2">Semester 2</option>
+          <option value="Semester 3">Semester 3</option>
+          <option value="Semester 4">Semester 4</option>
+          <option value="Semester 5">Semester 5</option>
+          <option value="Semester 6">Semester 6</option>
+        </select>
+      </div>
+
+      <div style="margin-top: 1.5rem;">
+        <button type="submit" class="btn">Submit Registration (RegistrationServlet)</button>
+      </div>
+    </form>
+
+    <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
+      <h3 style="color: #6366f1; font-size: 1.1rem; margin-bottom: 0.5rem;">Captured Servlet Output Screenshot</h3>
+      <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 1rem;">Dynamic HTTP POST response card showing successful validation and summary table from RegistrationServlet.java:</p>
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden;">
+        <img src="output.png" alt="Experiment 7 Output" style="width: 100%; display: block; border-radius: 8px;">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

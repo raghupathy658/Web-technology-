@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 9 - Servlet Lifecycle</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: #f8fafc; padding: 2rem; text-align: center; }
+    .card { max-width: 550px; margin: 3rem auto; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; }
+    .btn { display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Experiment 9: Servlet Lifecycle Monitor</h2>
+    <p style="color: #94a3b8; margin-top: 0.5rem;">Launch the servlet to observe execution counts of Constructor, init(), service(), and doGet().</p>
+    <a href="lifecycle" class="btn">Launch Lifecycle Servlet</a>
+
+    <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; text-align: left;">
+      <h3 style="color: #6366f1; font-size: 1.1rem; margin-bottom: 0.5rem;">Captured Servlet Output Screenshot</h3>
+      <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 1rem;">Lifecycle monitor portal generated dynamically by LifecycleServlet.java:</p>
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden;">
+        <img src="output.png" alt="Experiment 9 Output" style="width: 100%; display: block; border-radius: 8px;">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

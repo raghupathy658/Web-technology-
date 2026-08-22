@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 1 - Student Profile</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Experiment 1: Student Profile Modification</h1>
+    
+    <div class="layout">
+      <!-- Input & Customization Controls -->
+      <div class="panel">
+        <h2>Enter Student Details</h2>
+        <form id="profileForm" onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label for="inputName">Student Name:</label>
+            <input type="text" id="inputName" value="Sadhanandhan R">
+          </div>
+
+          <div class="form-group">
+            <label for="inputRegNo">Register Number:</label>
+            <input type="text" id="inputRegNo" value="312822104001">
+          </div>
+
+          <div class="form-group">
+            <label for="inputDept">Department:</label>
+            <select id="inputDept">
+              <option value="Computer Science & Engineering">Computer Science & Eng</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="AI & Data Science">AI & Data Science</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="inputYear">Year of Study:</label>
+            <select id="inputYear">
+              <option value="1st Year">1st Year</option>
+              <option value="2nd Year">2nd Year</option>
+              <option value="3rd Year" selected>3rd Year</option>
+              <option value="4th Year">4th Year</option>
+            </select>
+          </div>
+
+          <h3 style="margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1rem;">Profile Customization</h3>
+
+          <div class="form-group">
+            <label for="headingInput">Profile Heading:</label>
+            <input type="text" id="headingInput" value="STUDENT PROFILE CARD">
+          </div>
+
+          <div class="form-group">
+            <label for="textColor">Text Colour:</label>
+            <input type="color" id="textColor" value="#f8fafc">
+          </div>
+
+          <div class="form-group">
+            <label for="bgColor">Background Colour:</label>
+            <input type="color" id="bgColor" value="#1e293b">
+          </div>
+
+          <div class="btn-group">
+            <button type="button" id="btnShow">Show Profile</button>
+            <button type="button" id="btnHide" class="btn-secondary">Hide Profile</button>
+            <button type="button" id="btnToggleClass" class="btn-secondary">Toggle Border</button>
+            <button type="button" id="btnReset" class="btn-danger">Reset Profile</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Display Profile Card -->
+      <div class="panel">
+        <h2>Profile Preview</h2>
+        
+        <div id="profileCard">
+          <h3 id="profileHeading" style="margin-bottom: 1rem; color: #6366f1;">STUDENT PROFILE CARD</h3>
+          
+          <div class="profile-field">
+            <span>STUDENT NAME</span>
+            <strong id="displayName">Sadhanandhan R</strong>
+          </div>
+
+          <div class="profile-field">
+            <span>REGISTER NUMBER</span>
+            <strong id="displayRegNo">312822104001</strong>
+          </div>
+
+          <div class="profile-field">
+            <span>DEPARTMENT</span>
+            <strong id="displayDept">Computer Science & Engineering</strong>
+          </div>
+
+          <div class="profile-field">
+            <span>YEAR OF STUDY</span>
+            <strong id="displayYear">3rd Year</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Output Screenshot Preview -->
+    <div class="panel" style="margin-top: 2rem;">
+      <h2 style="color: #6366f1;">Captured Output Screenshot</h2>
+      <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">Rendered output snapshot showing student profile card customization and DOM updates:</p>
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden;">
+        <img src="output.png" alt="Experiment 1 Output" style="width: 100%; display: block; border-radius: 8px;">
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

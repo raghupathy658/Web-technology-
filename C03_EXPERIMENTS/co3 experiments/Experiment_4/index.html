@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 4 - Browser Information Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Experiment 4: Browser Information Dashboard</h1>
+
+    <div class="grid">
+      <!-- Card 1: URL -->
+      <div class="card">
+        <div class="card-title">window.location</div>
+        <div class="card-heading">Current Page URL</div>
+        <div id="urlVal" style="font-family: monospace; font-size: 0.85rem; word-break: break-all; color: #38bdf8;">Loading...</div>
+      </div>
+
+      <!-- Card 2: Navigator & Status -->
+      <div class="card">
+        <div class="card-title">navigator</div>
+        <div class="card-heading">Browser & Network</div>
+        <div>Language: <strong id="langVal">Loading...</strong></div>
+        <div style="margin-top: 0.4rem;">
+          Status: <span id="statusVal" class="badge-status badge-online">ONLINE</span>
+        </div>
+      </div>
+
+      <!-- Card 3: Screen Dimensions -->
+      <div class="card">
+        <div class="card-title">screen</div>
+        <div class="card-heading">Screen Resolution</div>
+        <div>Width: <span id="screenWidthVal" class="metric-val">0 px</span></div>
+        <div>Height: <span id="screenHeightVal" class="metric-val">0 px</span></div>
+      </div>
+
+      <!-- Card 4: Viewport Dimensions -->
+      <div class="card">
+        <div class="card-title">window.innerWidth / innerHeight</div>
+        <div class="card-heading">Browser Viewport</div>
+        <div>Width: <span id="viewportWidthVal" class="metric-val" style="color: #34d399;">0 px</span></div>
+        <div>Height: <span id="viewportHeightVal" class="metric-val" style="color: #34d399;">0 px</span></div>
+      </div>
+
+      <!-- Card 5: Scroll Position -->
+      <div class="card" style="border-color: rgba(236, 72, 153, 0.4);">
+        <div class="card-title" style="color: #ec4899;">window.scrollX / scrollY</div>
+        <div class="card-heading">Live Scroll Position</div>
+        <div>Scroll X: <span id="scrollXVal" class="metric-val" style="color: #f472b6;">0 px</span></div>
+        <div>Scroll Y: <span id="scrollYVal" class="metric-val" style="color: #f472b6;">0 px</span></div>
+      </div>
+    </div>
+
+    <!-- Scroll Test Section -->
+    <div class="card">
+      <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Scroll & Resize Test Area</h2>
+      <p style="color: #94a3b8; margin-bottom: 1rem;">
+        Scroll the window or resize your browser to observe dynamic updates of <strong>innerWidth</strong>, <strong>innerHeight</strong>, <strong>scrollX</strong>, and <strong>scrollY</strong>.
+      </p>
+
+      <div class="scroll-demo-box">
+        <div class="scroll-tall-content">
+          <h3 style="color: #6366f1;">Tall & Wide Scroll Container</h3>
+          <p>Scroll up, down, left, or right in this window to test scroll position tracking.</p>
+          <div style="margin-top: 500px; padding: 1rem; background: #1e293b; border-radius: 6px; width: 300px;">
+            🎯 Bottom Scroll Landmark
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Output Screenshot Preview -->
+    <div class="card" style="margin-top: 2rem;">
+      <h2 style="font-size: 1.2rem; color: #6366f1; margin-bottom: 0.5rem;">Captured Output Screenshot</h2>
+      <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">Browser Information Dashboard live metrics and viewport tracking snapshot:</p>
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden;">
+        <img src="output.png" alt="Experiment 4 Output" style="width: 100%; display: block; border-radius: 8px;">
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

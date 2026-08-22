@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 10 - Thread Safety & Race Conditions</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background-color: #0f172a; color: #f8fafc; padding: 2rem; }
+    .card { max-width: 800px; margin: 1rem auto; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    h1 { color: #6366f1; border-bottom: 2px solid rgba(99,102,241,0.3); padding-bottom: 0.5rem; margin-bottom: 1.5rem; font-size: 1.8rem; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+    .demo-box { background: #0f172a; border-radius: 10px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; justify-content: space-between; }
+    .btn { display: inline-block; padding: 0.75rem 1.25rem; text-decoration: none; border-radius: 6px; font-weight: 600; text-align: center; margin-top: 1rem; }
+    .btn-danger { background: #dc2626; color: #fff; }
+    .btn-success { background: #10b981; color: #fff; }
+    .concept-card { background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); border-radius: 10px; padding: 1.5rem; }
+    .concept-card h3 { color: #a5b4fc; font-size: 1.1rem; margin-bottom: 1rem; }
+    .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.88rem; line-height: 1.5; color: #94a3b8; }
+    .concept-item { background: #0f172a; padding: 0.85rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); }
+    .concept-item strong { color: #f8fafc; display: block; margin-bottom: 0.25rem; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Experiment 10: Servlet Concurrency & Thread Safety</h1>
+    <p style="color: #94a3b8; margin-bottom: 1.5rem;">
+      Apache Tomcat instantiates only ONE instance of each Servlet class. That single instance handles multiple client requests simultaneously using separate worker threads.
+    </p>
+
+    <div class="grid-2">
+      <!-- Unsafe Servlet -->
+      <div class="demo-box" style="border-color: rgba(239, 68, 68, 0.4);">
+        <div>
+          <span style="background: rgba(239,68,68,0.2); color: #fca5a5; padding: 0.2rem 0.6rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Unsafe</span>
+          <h3 style="color: #fca5a5; margin-top: 0.5rem; font-size: 1.15rem;">UnsafeVisitorServlet</h3>
+          <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.5rem;">
+            Uses primitive <code>int visitorCount = 0;</code> with <code>visitorCount++</code>. Vulnerable to race conditions under concurrent client threads.
+          </p>
+        </div>
+        <a href="unsafe-visitor" class="btn btn-danger">Test Unsafe Counter</a>
+      </div>
+
+      <!-- Safe Servlet -->
+      <div class="demo-box" style="border-color: rgba(16, 185, 129, 0.4);">
+        <div>
+          <span style="background: rgba(16,185,129,0.2); color: #34d399; padding: 0.2rem 0.6rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Thread Safe</span>
+          <h3 style="color: #34d399; margin-top: 0.5rem; font-size: 1.15rem;">SafeVisitorServlet</h3>
+          <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.5rem;">
+            Uses <code>AtomicInteger</code> with <code>incrementAndGet()</code>. Ensures thread safety without lost updates.
+          </p>
+        </div>
+        <a href="safe-visitor" class="btn btn-success">Test Safe Counter</a>
+      </div>
+    </div>
+
+    <!-- Educational Concepts Matrix -->
+    <div class="concept-card">
+      <h3>Concurrency Concepts Explained</h3>
+      <div class="concept-grid">
+        <div class="concept-item">
+          <strong>Servlet Concurrency & Shared Variables</strong>
+          Instance variables belong to the single Servlet instance and are shared across all worker threads. Local variables inside <code>doGet()</code> belong to the thread stack and are naturally thread-safe.
+        </div>
+
+        <div class="concept-item">
+          <strong>Race Condition & Testing</strong>
+          A race condition occurs when concurrent threads execute non-atomic read-modify-write operations simultaneously. <em>Note: Concurrent client requests (e.g. Apache JMeter or load test) are required to expose race condition bugs in production.</em>
+        </div>
+
+        <div class="concept-item">
+          <strong>AtomicInteger Solution</strong>
+          Provides lock-free, thread-safe atomic operations using hardware CAS (Compare-And-Swap) instructions, guaranteeing correctness under high concurrency.
+        </div>
+
+        <div class="concept-item">
+          <strong>Synchronization Alternative</strong>
+          Using <code>synchronized(this)</code> blocks or methods guarantees mutual exclusion, but can introduce performance bottlenecks under heavy load compared to <code>AtomicInteger</code>.
+        </div>
+      </div>
+
+      <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
+        <h3 style="color: #6366f1; font-size: 1.1rem; margin-bottom: 0.5rem;">Captured Servlet Output Screenshot</h3>
+        <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 1rem;">AtomicInteger thread-safe visitor counter output rendered by SafeVisitorServlet.java:</p>
+        <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden;">
+          <img src="output.png" alt="Experiment 10 Output" style="width: 100%; display: block; border-radius: 8px;">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 3 - Event Registration & Handling</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Experiment 3: Event Registration & Event Handling</h1>
+
+    <div class="layout">
+      <!-- Registration Form -->
+      <div class="panel">
+        <h2>Event Registration Form</h2>
+        
+        <!-- submit event on form -->
+        <form id="eventForm">
+          <div class="form-group">
+            <label for="studentName">Student Name *</label>
+            <!-- input, focus, blur events -->
+            <input type="text" id="studentName" placeholder="Enter student name" required>
+            <small style="color: #94a3b8; font-size: 0.8rem;">
+              Preview: <strong id="namePreview" style="color: #38bdf8;">—</strong> (<span id="charCount">0</span> chars)
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label for="studentEmail">Email Address *</label>
+            <!-- focus, blur events -->
+            <input type="email" id="studentEmail" placeholder="student@college.edu" required>
+          </div>
+
+          <div class="form-group">
+            <label for="eventSelect">Select Event *</label>
+            <!-- change event -->
+            <select id="eventSelect" required>
+              <option value="">-- Select Technical Event --</option>
+              <option value="Web Hackathon 2026">Web Hackathon 2026</option>
+              <option value="Code Debugging">Code Debugging</option>
+              <option value="UI/UX Design">UI/UX Design</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="participantCount">Participants *</label>
+            <input type="number" id="participantCount" min="1" max="5" value="1" required>
+          </div>
+
+          <div id="statusAlert" style="margin-bottom: 1rem; color: #6ee7b7; font-weight: bold;"></div>
+
+          <div class="btn-group">
+            <!-- mouseover, mouseout, submit events -->
+            <button type="submit" id="btnRegister">Register (submit event)</button>
+            
+            <!-- Intrinsic onclick handler -->
+            <button type="button" class="btn-secondary" onclick="handleIntrinsicReset()">Reset Form (Intrinsic onclick)</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Live Event Log & Comparison Panel -->
+      <div class="panel">
+        <h2>Live Event Inspector Log</h2>
+        
+        <div id="logConsole" class="log-box">
+          <!-- Live events appended here -->
+        </div>
+
+        <div class="comparison-box">
+          <h3 style="color: #a5b4fc; font-size: 1rem;">Intrinsic Event Handling vs addEventListener()</h3>
+          
+          <div class="comparison-grid">
+            <div class="comp-card">
+              <strong style="color: #fbbf24;">Intrinsic (e.g. onclick)</strong>
+              <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.2rem;">Written inline inside HTML tags. Simple for small demos but mixes HTML with JS and supports only one handler per event.</p>
+            </div>
+
+            <div class="comp-card">
+              <strong style="color: #34d399;">addEventListener()</strong>
+              <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.2rem;">Keeps JS separated from HTML. Supports multiple listeners for the same event and allows control over event bubbling.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Output Screenshot Preview -->
+    <div class="panel" style="margin-top: 2rem;">
+      <h2 style="color: #6366f1;">Captured Output Screenshot</h2>
+      <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">Rendered snapshot showing real-time event listener logging and form handling:</p>
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden;">
+        <img src="output.png" alt="Experiment 3 Output" style="width: 100%; display: block; border-radius: 8px;">
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
