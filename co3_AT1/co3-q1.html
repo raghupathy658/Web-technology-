@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Registration Preview</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+
+            background: linear-gradient(
+                135deg,
+                #667eea,
+                #764ba2
+            );
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 25px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 20px 50px
+                rgba(0, 0, 0, 0.25);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #777;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .form-section,
+        .preview-section {
+            background: #f8f9ff;
+
+            padding: 25px;
+
+            border-radius: 15px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+
+            color: #444;
+
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+
+            font-weight: bold;
+
+            color: #444;
+
+            margin-bottom: 7px;
+        }
+
+        input,
+        select {
+            width: 100%;
+
+            padding: 12px;
+
+            border: 2px solid #ddd;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #667eea;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+        .student-count {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        button {
+            flex: 1;
+
+            padding: 12px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        #displayBtn {
+            background: #667eea;
+        }
+
+        #removeBtn {
+            background: #e74c3c;
+        }
+
+        #displayBtn:hover {
+            background: #5369d8;
+        }
+
+        #removeBtn:hover {
+            background: #c0392b;
+        }
+
+        .student-profile {
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 12px;
+
+            border-left: 6px solid #667eea;
+
+            box-shadow:
+                0 5px 15px
+                rgba(0, 0, 0, 0.1);
+        }
+
+        .student-profile h3 {
+            color: #667eea;
+
+            margin-bottom: 15px;
+        }
+
+        .student-profile p {
+            padding: 9px 0;
+
+            border-bottom: 1px solid #eee;
+
+            color: #555;
+        }
+
+        .profile-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 15px;
+        }
+
+        .profile-actions button {
+            background: #e74c3c;
+            padding: 9px 14px;
+            flex: 0 0 auto;
+        }
+
+        .profile-actions button:hover {
+            background: #c0392b;
+        }
+
+        .empty {
+            text-align: center;
+
+            color: #999;
+
+            padding: 70px 10px;
+        }
+
+        @media (max-width: 700px) {
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>🎓 Student Registration</h1>
+
+        <p>
+            DOM-Based Interactive Student Registration Preview
+        </p>
+
+    </div>
+
+
+    <div class="content">
+
+
+        <!-- REGISTRATION FORM -->
+
+        <div class="form-section">
+
+            <div class="section-title">
+                Student Details
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="name">
+                    Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter student name">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="regno">
+                    Register Number
+                </label>
+
+                <input
+                    type="text"
+                    id="regno"
+                    placeholder="Enter register number">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="department">
+                    Department
+                </label>
+
+                <input
+                    type="text"
+                    id="department"
+                    placeholder="Enter department">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="year">
+                    Year of Study
+                </label>
+
+                <select id="year">
+
+                    <option value="">
+                        Select Year
+                    </option>
+
+                    <option value="1st Year">
+                        1st Year
+                    </option>
+
+                    <option value="2nd Year">
+                        2nd Year
+                    </option>
+
+                    <option value="3rd Year">
+                        3rd Year
+                    </option>
+
+                    <option value="4th Year">
+                        4th Year
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="buttons">
+
+                <button id="displayBtn">
+                    Add Student
+                </button>
+
+                <button id="removeBtn">
+                    Remove All
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROFILE PREVIEW -->
+
+        <div class="preview-section">
+
+            <div class="section-title">
+                Student Profile
+            </div>
+
+            <div id="studentCount" class="student-count">
+                0 students added
+            </div>
+
+            <div id="profileContainer">
+
+                <div class="empty">
+                    Profile preview will appear here.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    // Selecting buttons and container using getElementById()
+
+    const displayBtn =
+        document.getElementById("displayBtn");
+
+    const removeBtn =
+        document.getElementById("removeBtn");
+
+    const profileContainer =
+        document.getElementById("profileContainer");
+
+
+    const students = [];
+
+    function resetForm() {
+        document.getElementById("name").value = "";
+        document.getElementById("regno").value = "";
+        document.getElementById("department").value = "";
+        document.getElementById("year").value = "";
+        document.getElementById("name").focus();
+    }
+
+    function renderStudents() {
+        profileContainer.innerHTML = "";
+        document.getElementById("studentCount").textContent =
+            students.length + (students.length === 1 ? " student added" : " students added");
+
+        if (students.length === 0) {
+            profileContainer.innerHTML =
+                '<div class="empty">Profile preview will appear here.</div>';
+            return;
+        }
+
+        students.forEach(function (student, index) {
+            const profile = document.createElement("div");
+            profile.classList.add("student-profile");
+
+            const heading = document.createElement("h3");
+            heading.textContent = "🎓 " + student.name;
+            profile.appendChild(heading);
+
+            [
+                "Register Number: " + student.regno,
+                "Department: " + student.department,
+                "Year of Study: " + student.year
+            ].forEach(function (text) {
+                const detail = document.createElement("p");
+                detail.textContent = text;
+                profile.appendChild(detail);
+            });
+
+            const actions = document.createElement("div");
+            actions.classList.add("profile-actions");
+            const removeStudentBtn = document.createElement("button");
+            removeStudentBtn.type = "button";
+            removeStudentBtn.textContent = "Remove";
+            removeStudentBtn.addEventListener("click", function () {
+                students.splice(index, 1);
+                renderStudents();
+            });
+            actions.appendChild(removeStudentBtn);
+            profile.appendChild(actions);
+            profileContainer.appendChild(profile);
+        });
+    }
+
+    // ADD STUDENT BUTTON EVENT
+
+    displayBtn.addEventListener("click", function () {
+
+        // Reading form values
+
+        const name =
+            document.getElementById("name")
+            .value.trim();
+
+        const regno =
+            document.getElementById("regno")
+            .value.trim();
+
+        const department =
+            document.getElementById("department")
+            .value.trim();
+
+        const year =
+            document.getElementById("year")
+            .value;
+
+
+        // Validation
+
+        if (
+            name === "" ||
+            regno === "" ||
+            department === "" ||
+            year === ""
+        ) {
+
+            alert(
+                "Please enter all student details."
+            );
+
+            return;
+        }
+
+
+        if (students.some(function (student) {
+            return student.regno.toLowerCase() === regno.toLowerCase();
+        })) {
+            alert("A student with this register number already exists.");
+            return;
+        }
+
+        students.push({ name, regno, department, year });
+        renderStudents();
+        resetForm();
+
+    });
+
+
+    // REMOVE ALL BUTTON EVENT
+
+    removeBtn.addEventListener(
+        "click",
+        function () {
+
+            if (students.length === 0) {
+                return;
+            }
+
+            if (confirm("Remove all students?")) {
+                students.length = 0;
+                renderStudents();
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+
+</html>

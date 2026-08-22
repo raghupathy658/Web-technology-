@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Result Processing</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+
+            background: linear-gradient(
+                135deg,
+                #11998e,
+                #38ef7d
+            );
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 20px 60px
+                rgba(0, 0, 0, 0.25);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 30px;
+            color: #222;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #777;
+            font-size: 15px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: #f8fffb;
+            border: 1px solid #d8f1e2;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #11998e;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 7px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+
+            border: 2px solid #ddd;
+            border-radius: 8px;
+
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #11998e;
+        }
+
+        .marks {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: #11998e;
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            margin-top: 8px;
+        }
+
+        button:hover {
+            background: #0c8178;
+        }
+
+        .clear-btn {
+            background: #e74c3c;
+            margin-top: 10px;
+        }
+
+        .clear-btn:hover {
+            background: #c0392b;
+        }
+
+        .result-box {
+            min-height: 350px;
+        }
+
+        .empty {
+            height: 300px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            color: #999;
+        }
+
+        .student-info {
+            background: white;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            margin-bottom: 18px;
+
+            border-left: 5px solid #11998e;
+        }
+
+        .student-info p {
+            padding: 5px 0;
+            color: #444;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th,
+        td {
+            padding: 11px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #11998e;
+            color: white;
+        }
+
+        .status {
+            margin-top: 20px;
+
+            padding: 13px;
+
+            border-radius: 8px;
+
+            text-align: center;
+
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .pass {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .fail {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .error {
+            background: #fff0f0;
+
+            border-left: 5px solid #e74c3c;
+
+            padding: 15px;
+
+            color: #c0392b;
+
+            border-radius: 8px;
+        }
+
+        @media (max-width: 700px) {
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .marks {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>📊 Student Result Processing</h1>
+
+        <p>
+            Student Result Calculation & Evaluation
+        </p>
+
+    </div>
+
+
+    <div class="content">
+
+
+        <!-- FORM -->
+
+        <div class="card">
+
+            <div class="card-title">
+                Student Details
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="name">
+                    Student Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter student name">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="regno">
+                    Register Number
+                </label>
+
+                <input
+                    type="text"
+                    id="regno"
+                    placeholder="Enter register number">
+
+            </div>
+
+
+            <div class="card-title">
+                Subject Marks
+            </div>
+
+
+            <div class="marks">
+
+
+                <div class="form-group">
+
+                    <label for="mark1">
+                        Subject 1
+                    </label>
+
+                    <input
+                        type="number"
+                        id="mark1"
+                        min="0"
+                        max="100"
+                        placeholder="0 - 100">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="mark2">
+                        Subject 2
+                    </label>
+
+                    <input
+                        type="number"
+                        id="mark2"
+                        min="0"
+                        max="100"
+                        placeholder="0 - 100">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="mark3">
+                        Subject 3
+                    </label>
+
+                    <input
+                        type="number"
+                        id="mark3"
+                        min="0"
+                        max="100"
+                        placeholder="0 - 100">
+
+                </div>
+
+            </div>
+
+
+            <button id="calculateBtn">
+                Calculate Result
+            </button>
+
+
+            <button
+                id="clearBtn"
+                class="clear-btn">
+
+                Clear
+
+            </button>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div class="card result-box">
+
+            <div class="card-title">
+                Result
+            </div>
+
+            <div id="resultContainer">
+
+                <div class="empty">
+
+                    Enter the student details<br>
+                    and click Calculate Result.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    const calculateBtn =
+        document.getElementById("calculateBtn");
+
+    const clearBtn =
+        document.getElementById("clearBtn");
+
+    const resultContainer =
+        document.getElementById("resultContainer");
+
+
+    calculateBtn.addEventListener(
+        "click",
+        function () {
+
+
+            // Read values
+
+            const name =
+                document.getElementById("name")
+                .value.trim();
+
+            const regno =
+                document.getElementById("regno")
+                .value.trim();
+
+            const mark1Value =
+                document.getElementById("mark1")
+                .value;
+
+            const mark2Value =
+                document.getElementById("mark2")
+                .value;
+
+            const mark3Value =
+                document.getElementById("mark3")
+                .value;
+
+
+            // Missing value validation
+
+            if (
+                name === "" ||
+                regno === "" ||
+                mark1Value === "" ||
+                mark2Value === "" ||
+                mark3Value === ""
+            ) {
+
+                resultContainer.innerHTML =
+                    '<div class="error">' +
+                    '<b>Error:</b> ' +
+                    'All fields are required.' +
+                    '</div>';
+
+                return;
+            }
+
+
+            // Convert marks
+
+            const mark1 =
+                Number(mark1Value);
+
+            const mark2 =
+                Number(mark2Value);
+
+            const mark3 =
+                Number(mark3Value);
+
+
+            // Mark validation
+
+            if (
+                mark1 < 0 || mark1 > 100 ||
+                mark2 < 0 || mark2 > 100 ||
+                mark3 < 0 || mark3 > 100
+            ) {
+
+                resultContainer.innerHTML =
+                    '<div class="error">' +
+                    '<b>Error:</b> ' +
+                    'Marks must be between 0 and 100.' +
+                    '</div>';
+
+                return;
+            }
+
+
+            // Calculate total
+
+            const total =
+                mark1 + mark2 + mark3;
+
+
+            // Calculate average
+
+            const average =
+                total / 3;
+
+
+            // Find highest mark
+
+            const highest =
+                Math.max(
+                    mark1,
+                    mark2,
+                    mark3
+                );
+
+
+            // Pass / Fail
+
+            let status;
+
+            if (
+                mark1 >= 40 &&
+                mark2 >= 40 &&
+                mark3 >= 40
+            ) {
+
+                status = "PASS";
+
+            } else {
+
+                status = "FAIL";
+            }
+
+
+            // Create result dynamically
+
+            resultContainer.innerHTML = `
+
+                <div class="student-info">
+
+                    <p>
+                        <b>Name:</b>
+                        ${name}
+                    </p>
+
+                    <p>
+                        <b>Register Number:</b>
+                        ${regno}
+                    </p>
+
+                </div>
+
+
+                <table>
+
+                    <tr>
+                        <th>Particular</th>
+                        <th>Value</th>
+                    </tr>
+
+                    <tr>
+                        <td>Subject 1</td>
+                        <td>${mark1}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Subject 2</td>
+                        <td>${mark2}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Subject 3</td>
+                        <td>${mark3}</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Total</b></td>
+                        <td><b>${total}</b></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Average</b></td>
+                        <td>
+                            <b>${average.toFixed(2)}</b>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Highest Mark</b></td>
+                        <td><b>${highest}</b></td>
+                    </tr>
+
+                </table>
+
+
+                <div class="status ${
+                    status === "PASS"
+                    ? "pass"
+                    : "fail"
+                }">
+
+                    Result: ${status}
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    // Clear button
+
+    clearBtn.addEventListener(
+        "click",
+        function () {
+
+            document.getElementById("name").value = "";
+
+            document.getElementById("regno").value = "";
+
+            document.getElementById("mark1").value = "";
+
+            document.getElementById("mark2").value = "";
+
+            document.getElementById("mark3").value = "";
+
+
+            resultContainer.innerHTML = `
+
+                <div class="empty">
+
+                    Enter the student details<br>
+                    and click Calculate Result.
+
+                </div>
+
+            `;
+
+        }
+    );
+
+</script>
+
+</body>
+
+</html>
