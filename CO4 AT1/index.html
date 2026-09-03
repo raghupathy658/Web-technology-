@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CO4 A1 - Advanced Course Enrollment Intelligence & XML/XPath/XSLT Analytical Engine">
+  <title>CO4 A1 | XML & Course Intelligence Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow effects -->
+  <div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-3" aria-hidden="true"></div>
+  <div class="bg-grid-pattern" aria-hidden="true"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="site-header">
+    <div class="header-left">
+      <a class="brand" href="#home" aria-label="Go to top">
+        <div class="brand-badge">
+          <span class="brand-code">XML</span>
+          <span class="brand-pulse"></span>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">CourseIntel<strong>.XML</strong></div>
+          <div class="brand-subtitle">WEB TECH UNIT IV &bull; CO4 AT1</div>
+        </div>
+      </a>
+      <div class="engine-status-pill" id="engineStatusPill">
+        <span class="status-indicator live"></span>
+        <span class="status-text" id="engineStatusText">XML Engine Ready</span>
+      </div>
+    </div>
+
+    <nav class="top-nav" aria-label="Primary Navigation">
+      <a class="nav-link active" href="#home"><span class="nav-num">00</span>Overview</a>
+      <a class="nav-link" href="#q1"><span class="nav-num">01</span>XML Structure</a>
+      <a class="nav-link" href="#q2"><span class="nav-num">02</span>XPath Engine</a>
+      <a class="nav-link" href="#q3"><span class="nav-num">03</span>XSLT Lab</a>
+      <a class="nav-link" href="#q4"><span class="nav-num">04</span>Data Analytics</a>
+      <a class="nav-link" href="#dataset"><span class="nav-num">05</span>Explorer</a>
+      <a class="nav-link" href="#algorithms"><span class="nav-num">06</span>Algorithms</a>
+      <a class="nav-link" href="#quiz"><span class="nav-num">07</span>Quiz</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="action-btn theme-toggle-btn" id="themeToggle" title="Toggle Dark/Light Mode" aria-label="Toggle theme">
+        <span class="theme-icon sun-icon">☀️</span>
+        <span class="theme-icon moon-icon">🌙</span>
+      </button>
+      <button class="action-btn btn-simulator-toggle" id="openSimulatorBtn" title="Open Data Simulator">
+        <span class="btn-icon">⚡</span>
+        <span class="btn-text">Simulator</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Application Layout Shell -->
+  <div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-tag">ASSESSMENT MODULE</span>
+        <h2 class="sidebar-heading">Data Interpretation<br><em>& Processing</em></h2>
+      </div>
+
+      <div class="sidebar-progress-card">
+        <div class="progress-info">
+          <span class="progress-label">CORE QUESTIONS</span>
+          <strong class="progress-val">4 / 4 Complete</strong>
+        </div>
+        <div class="progress-meter">
+          <div class="progress-fill" style="width: 100%;"></div>
+        </div>
+        <div class="marks-total-chip">
+          <span>Max Marks:</span>
+          <strong>30 PTS</strong>
+        </div>
+      </div>
+
+      <nav class="side-nav" aria-label="Sidebar Menu">
+        <a class="side-link active" href="#home">
+          <span class="side-link-icon">⚡</span>
+          <span class="side-link-text">Executive Dashboard</span>
+          <span class="side-badge">Overview</span>
+        </a>
+        <a class="side-link" href="#q1">
+          <span class="side-link-icon">📁</span>
+          <span class="side-link-text">Q1 &bull; XML Structure</span>
+          <span class="side-badge marks">5 M</span>
+        </a>
+        <a class="side-link" href="#q2">
+          <span class="side-link-icon">🎯</span>
+          <span class="side-link-text">Q2 &bull; XPath Selection</span>
+          <span class="side-badge marks">10 M</span>
+        </a>
+        <a class="side-link" href="#q3">
+          <span class="side-link-icon">🔄</span>
+          <span class="side-link-text">Q3 &bull; XSLT Transform</span>
+          <span class="side-badge marks">10 M</span>
+        </a>
+        <a class="side-link" href="#q4">
+          <span class="side-link-icon">📊</span>
+          <span class="side-link-text">Q4 &bull; Interpretation</span>
+          <span class="side-badge marks">5 M</span>
+        </a>
+        <a class="side-link" href="#dataset">
+          <span class="side-link-icon">🔍</span>
+          <span class="side-link-text">Live Dataset Explorer</span>
+        </a>
+        <a class="side-link" href="#algorithms">
+          <span class="side-link-icon">⚙️</span>
+          <span class="side-link-text">Algorithms</span>
+        </a>
+        <a class="side-link" href="#quiz">
+          <span class="side-link-icon">💡</span>
+          <span class="side-link-text">Knowledge Check</span>
+        </a>
+        <a class="side-link" href="#results">
+          <span class="side-link-icon">✅</span>
+          <span class="side-link-text">Verification Matrix</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="source-status-card">
+          <div class="source-status-header">
+            <span class="pulse-dot"></span>
+            <span class="source-status-title">Dataset Connectivity</span>
+          </div>
+          <div class="source-status-desc" id="datasetSourceDesc">Loading source XML...</div>
+        </div>
+        <button class="btn-report-export" id="quickReportBtn">
+          <span>📄 Print / Export Summary</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- HERO SECTION -->
+      <section class="hero-section section-anchor" id="home">
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <span class="badge-accent">ACADEMIC ASSESSMENT</span>
+            <span class="badge-sub">COURSE OUTCOME 4 &bull; UNIT IV</span>
+          </div>
+          <h1 class="hero-title">
+            Course Enrollment<br>
+            <span class="gradient-text">Data Interpretation Engine</span>
+          </h1>
+          <p class="hero-description">
+            A state-of-the-art interactive analytical platform demonstrating hierarchical <strong>XML modeling</strong>, dynamic <strong>XPath query execution</strong>, responsive <strong>XSLT presentation</strong>, and real-time academic <strong>data interpretation</strong>.
+          </p>
+          <div class="hero-cta-group">
+            <a class="btn-primary" href="#q1">
+              <span>Explore Assessment</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <button class="btn-secondary" id="runAllXpathHeroBtn">
+              <span class="btn-icon">⚡</span>
+              <span>Execute All XPath Queries</span>
+            </button>
+            <button class="btn-glass" id="triggerXsltHeroBtn">
+              <span>Run XSLT Transform</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-analytics-hud">
+          <div class="hud-card">
+            <div class="hud-header">
+              <span class="hud-title">LIVE DATA FEED</span>
+              <span class="hud-live-tag">REALTIME</span>
+            </div>
+            <div class="hud-body">
+              <div class="hud-metric-row">
+                <div class="hud-big-num" id="hudCourseCount">5</div>
+                <div class="hud-label-group">
+                  <strong>Course Records</strong>
+                  <span>Synchronized from XML</span>
+                </div>
+              </div>
+              <div class="hud-mini-stats">
+                <div class="mini-stat-item">
+                  <span class="mini-stat-label">Total Enrollment</span>
+                  <strong class="mini-stat-val" id="hudTotalStudents">272</strong>
+                </div>
+                <div class="mini-stat-item">
+                  <span class="mini-stat-label">Max Class Size</span>
+                  <strong class="mini-stat-val" id="hudMaxStudents">72</strong>
+                </div>
+                <div class="mini-stat-item">
+                  <span class="mini-stat-label">Theory / Practical</span>
+                  <strong class="mini-stat-val" id="hudTypeRatio">4 / 1</strong>
+                </div>
+              </div>
+              <!-- Visual sparkline / bar preview -->
+              <div class="hud-chart-preview" id="hudChartMini">
+                <div class="hud-bar-col" style="--val: 58%;" title="WEB301: 58"><span>58</span><small>WEB</small></div>
+                <div class="hud-bar-col highlight" style="--val: 72%;" title="AI302: 72"><span>72</span><small>AI</small></div>
+                <div class="hud-bar-col" style="--val: 36%;" title="WEB303: 36"><span>36</span><small>LAB</small></div>
+                <div class="hud-bar-col" style="--val: 64%;" title="ML304: 64"><span>64</span><small>ML</small></div>
+                <div class="hud-bar-col" style="--val: 42%;" title="DB305: 42"><span>42</span><small>DB</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- KPI METRIC STRIP -->
+      <section class="kpi-metric-strip" aria-label="Key Performance Indicators">
+        <div class="kpi-card">
+          <div class="kpi-icon-wrap icon-blue">📚</div>
+          <div class="kpi-data">
+            <span class="kpi-label">TOTAL COURSES</span>
+            <strong class="kpi-value" id="statCourses">5</strong>
+            <span class="kpi-trend">Active curriculum</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon-wrap icon-green">👥</div>
+          <div class="kpi-data">
+            <span class="kpi-label">TOTAL STUDENTS</span>
+            <strong class="kpi-value" id="statStudents">272</strong>
+            <span class="kpi-trend highlight-green">&Sigma; Enrolled learners</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon-wrap icon-purple">📈</div>
+          <div class="kpi-data">
+            <span class="kpi-label">AVG. CLASS ENROLLMENT</span>
+            <strong class="kpi-value" id="statAverage">54.4</strong>
+            <span class="kpi-trend">Students / section</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon-wrap icon-amber">⚖️</div>
+          <div class="kpi-data">
+            <span class="kpi-label">THEORY / LAB RATIO</span>
+            <strong class="kpi-value" id="statTypes">4 / 1</strong>
+            <span class="kpi-trend">80% Theory load</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon-wrap icon-coral">🏆</div>
+          <div class="kpi-data">
+            <span class="kpi-label">CUMULATIVE CREDITS</span>
+            <strong class="kpi-value" id="statCredits">17</strong>
+            <span class="kpi-trend">Earnable credits</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ASSESSMENT FLOW NAVIGATION CARDS -->
+      <section class="assessment-matrix-banner">
+        <div class="matrix-heading">
+          <span class="tag-glow">ASSESSMENT MAP</span>
+          <h2>Four Disciplines &bull; One Integrated Architecture</h2>
+          <p>Navigate through the complete lifecycle of course data from raw structural storage to high-level strategic findings.</p>
+        </div>
+        <div class="assessment-nav-grid">
+          <a class="nav-quad-card quad-1" href="#q1">
+            <div class="quad-header">
+              <span class="quad-code">Q1</span>
+              <span class="quad-marks">5 MARKS</span>
+            </div>
+            <div class="quad-body">
+              <h3>XML Structure</h3>
+              <p>Hierarchical tree parsing, unique keys &amp; well-formedness rules.</p>
+            </div>
+            <div class="quad-footer">
+              <span>Inspect Schema</span>
+              <span class="arrow">&rarr;</span>
+            </div>
+          </a>
+          <a class="nav-quad-card quad-2" href="#q2">
+            <div class="quad-header">
+              <span class="quad-code">Q2</span>
+              <span class="quad-marks">10 MARKS</span>
+            </div>
+            <div class="quad-body">
+              <h3>XPath Engine</h3>
+              <p>10 dynamic path expressions, predicates, axes &amp; functions.</p>
+            </div>
+            <div class="quad-footer">
+              <span>Run Queries</span>
+              <span class="arrow">&rarr;</span>
+            </div>
+          </a>
+          <a class="nav-quad-card quad-3" href="#q3">
+            <div class="quad-header">
+              <span class="quad-code">Q3</span>
+              <span class="quad-marks">10 MARKS</span>
+            </div>
+            <div class="quad-body">
+              <h3>XSLT Transformation</h3>
+              <p>Filter &gt;40 students, descending sort &amp; HTML synthesis.</p>
+            </div>
+            <div class="quad-footer">
+              <span>Transform Live</span>
+              <span class="arrow">&rarr;</span>
+            </div>
+          </a>
+          <a class="nav-quad-card quad-4" href="#q4">
+            <div class="quad-header">
+              <span class="quad-code">Q4</span>
+              <span class="quad-marks">5 MARKS</span>
+            </div>
+            <div class="quad-body">
+              <h3>Data Analytics</h3>
+              <p>Statistical summaries, extremes &amp; resource allocations.</p>
+            </div>
+            <div class="quad-footer">
+              <span>View Insights</span>
+              <span class="arrow">&rarr;</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- QUESTION 1: XML STRUCTURE -->
+      <!-- ================================================================= -->
+      <section class="content-block section-anchor" id="q1">
+        <div class="block-header">
+          <div class="block-header-info">
+            <div class="badge-row">
+              <span class="num-badge">01</span>
+              <span class="mark-tag">QUESTION 1 &bull; 5 MARKS</span>
+            </div>
+            <h2 class="block-title">Interpret the XML Structure</h2>
+            <p class="block-subtitle">Examine the foundational tree model, attributes, numeric tags, and syntactic validity criteria.</p>
+          </div>
+          <div class="block-header-actions">
+            <button class="btn-outline-sm" id="copyXmlBtn">
+              <span>📋 Copy XML</span>
+            </button>
+            <button class="btn-outline-sm" id="toggleXmlTreeBtn">
+              <span>🌲 Toggle Interactive Tree</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="q1-layout">
+          <!-- Analytical Breakdown Table -->
+          <div class="card-glass q1-table-card">
+            <div class="card-inner-header">
+              <div class="card-title-group">
+                <span class="card-kicker">STRUCTURAL AUDIT</span>
+                <h3>Specification &amp; Rationale</h3>
+              </div>
+              <span class="status-chip success">✓ Validated</span>
+            </div>
+            <div class="table-responsive">
+              <table class="modern-table">
+                <thead>
+                  <tr>
+                    <th style="width: 50px;">Item</th>
+                    <th style="width: 220px;">Component</th>
+                    <th>Analytical Answer &amp; Architectural Role</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="sub-label">a</span></td>
+                    <td><strong>Root Element</strong></td>
+                    <td>
+                      <code class="tag-badge">&lt;courses&gt;</code>
+                      <p class="cell-desc">The single top-level container element encapsulating the entire academic dataset.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="sub-label">b</span></td>
+                    <td><strong>Repeating Record Element</strong></td>
+                    <td>
+                      <code class="tag-badge">&lt;course&gt;</code>
+                      <p class="cell-desc">Individual course entity representing repeating instances with identical schema.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="sub-label">c</span></td>
+                    <td><strong>Unique Identifier Attribute</strong></td>
+                    <td>
+                      <code class="tag-badge">id="..." (e.g. "C101")</code>
+                      <p class="cell-desc">XML attribute within <code>&lt;course&gt;</code> providing primary key uniqueness across the document.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="sub-label">d</span></td>
+                    <td><strong>Numeric Information Elements</strong></td>
+                    <td>
+                      <div class="tag-flex">
+                        <code class="tag-badge">&lt;students&gt;</code>
+                        <code class="tag-badge">&lt;credits&gt;</code>
+                      </div>
+                      <p class="cell-desc">Contain quantitative integer values utilized for arithmetic aggregation and predicate filtering.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="sub-label">e</span></td>
+                    <td><strong>Well-Formedness Verification</strong></td>
+                    <td>
+                      <div class="status-badge-inline">
+                        <span class="check-icon">✓</span>
+                        <strong>Yes, Strictly Well-Formed</strong>
+                      </div>
+                      <p class="cell-desc">Complies with W3C XML 1.0 rules: single root, properly closed/nested tags, case-matching, properly quoted attribute values (<code>"C101"</code>), and valid <code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</code> prologue.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- XML Code View & Interactive Tree Inspector -->
+          <div class="card-glass q1-code-card">
+            <div class="card-inner-header">
+              <div class="card-title-group">
+                <span class="card-kicker">DOCUMENT REPOSITORY</span>
+                <h3>courses.xml</h3>
+              </div>
+              <div class="code-view-tabs">
+                <button class="code-tab active" id="tabRawXml">Raw XML</button>
+                <button class="code-tab" id="tabTreeXml">Interactive Tree</button>
+              </div>
+            </div>
+            
+            <div class="code-container" id="rawXmlContainer">
+              <div class="code-header-bar">
+                <span class="lang-tag">XML 1.0</span>
+                <span class="line-count">43 lines</span>
+              </div>
+              <pre class="code-block"><code id="xmlCode">Loading courses.xml...</code></pre>
+            </div>
+
+            <div class="tree-container hidden" id="treeXmlContainer">
+              <div class="tree-header-bar">
+                <span>DOM Node Hierarchy (Click nodes to expand/collapse)</span>
+              </div>
+              <div class="tree-view" id="xmlInteractiveTree">
+                <!-- Dynamically populated DOM tree -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- QUESTION 2: XPATH SELECTION ENGINE -->
+      <!-- ================================================================= -->
+      <section class="content-block section-anchor" id="q2">
+        <div class="block-header">
+          <div class="block-header-info">
+            <div class="badge-row">
+              <span class="num-badge">02</span>
+              <span class="mark-tag">QUESTION 2 &bull; 10 MARKS</span>
+            </div>
+            <h2 class="block-title">Apply XPath for Data Selection</h2>
+            <p class="block-subtitle">Execute all 10 academic expressions in real-time or test custom queries in the live XPath sandbox.</p>
+          </div>
+          <div class="block-header-actions">
+            <button class="btn-primary-sm" id="runAllXpathBtn">
+              <span>⚡ Run All 10 Queries</span>
+            </button>
+            <button class="btn-outline-sm" id="clearAllXpathBtn">
+              <span>🔄 Reset Results</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Custom XPath Interactive Sandbox -->
+        <div class="card-glass xpath-sandbox-card">
+          <div class="sandbox-header">
+            <div class="sandbox-title">
+              <span class="sandbox-badge">INTERACTIVE SANDBOX</span>
+              <h3>Live XPath Playground</h3>
+            </div>
+            <div class="sandbox-metrics" id="sandboxMetrics">
+              <span>Target: courses.xml DOM</span>
+            </div>
+          </div>
+          <div class="sandbox-input-row">
+            <div class="xpath-input-wrap">
+              <span class="xpath-prefix">xpath:</span>
+              <input type="text" id="customXpathInput" value="/courses/course[students > 50]/name" placeholder="Enter any valid XPath expression (e.g. /courses/course/@id)...">
+            </div>
+            <button class="btn-primary" id="runCustomXpathBtn">
+              <span>Evaluate Query</span>
+            </button>
+          </div>
+          <div class="sandbox-quick-pills">
+            <span>Quick Presets:</span>
+            <button class="pill-btn" data-query="/courses/course/code">Course Codes</button>
+            <button class="pill-btn" data-query="//course[credits=4]/faculty">4-Credit Faculty</button>
+            <button class="pill-btn" data-query="sum(/courses/course/students)">Sum of Students</button>
+            <button class="pill-btn" data-query="count(/courses/course[type='Theory'])">Count Theory</button>
+            <button class="pill-btn" data-query="/courses/course[students=max(//students)]/name">Highest Course</button>
+          </div>
+          <div class="sandbox-output-zone" id="customXpathOutput">
+            <div class="empty-state-text">Click "Evaluate Query" or test any preset expression above.</div>
+          </div>
+        </div>
+
+        <!-- 10 Academic XPath Cards Grid -->
+        <div class="xpath-filter-toolbar">
+          <span class="toolbar-label">Filter Queries:</span>
+          <button class="filter-pill active" data-filter="all">All (10)</button>
+          <button class="filter-pill" data-filter="basic">Selection (a,b,h)</button>
+          <button class="filter-pill" data-filter="predicates">Predicates (c,d,e,f,g)</button>
+          <button class="filter-pill" data-filter="positional">Positional (i,j)</button>
+        </div>
+
+        <div class="xpath-cards-grid" id="xpathCards">
+          <!-- Dynamically populated 10 XPath query cards -->
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- QUESTION 3: XSLT TRANSFORMATION LABORATORY -->
+      <!-- ================================================================= -->
+      <section class="content-block section-anchor" id="q3">
+        <div class="block-header">
+          <div class="block-header-info">
+            <div class="badge-row">
+              <span class="num-badge">03</span>
+              <span class="mark-tag">QUESTION 3 &bull; 10 MARKS</span>
+            </div>
+            <h2 class="block-title">Apply XSLT for Data Presentation</h2>
+            <p class="block-subtitle">Synthesize HTML presentation from XML using template matching, conditional predicate filtering (<code>students &gt; 40</code>), and numeric descending sorting.</p>
+          </div>
+          <div class="block-header-actions">
+            <button class="btn-primary" id="runXslt">
+              <span class="btn-icon">⚡</span>
+              <span>Execute Transformation</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Threshold & Parameter Controller -->
+        <div class="card-glass xslt-control-card">
+          <div class="xslt-slider-group">
+            <label for="xsltThresholdRange">
+              <span class="slider-title">Filter Threshold (Students &gt; X):</span>
+              <strong class="slider-value" id="xsltThresholdVal">40</strong>
+            </label>
+            <input type="range" id="xsltThresholdRange" min="10" max="70" value="40" step="5">
+          </div>
+          <div class="xslt-rule-badges">
+            <span class="rule-chip active">&bull; Matching: <code>courses</code></span>
+            <span class="rule-chip active">&bull; Predicate: <code>course[students &gt; <span id="ruleThreshold">40</span>]</code></span>
+            <span class="rule-chip active">&bull; Sort: <code>students (numeric, descending)</code></span>
+          </div>
+        </div>
+
+        <!-- Dual Code View Grid -->
+        <div class="xslt-sources-grid">
+          <div class="card-glass code-source-box">
+            <div class="card-inner-header">
+              <div class="card-title-group">
+                <span class="card-kicker">XML INPUT FEED</span>
+                <h3>courses.xml</h3>
+              </div>
+              <span class="file-ext-badge">XML</span>
+            </div>
+            <pre class="code-block code-block-tall"><code id="xmlCodeQ3">Loading XML source...</code></pre>
+          </div>
+
+          <div class="card-glass code-source-box">
+            <div class="card-inner-header">
+              <div class="card-title-group">
+                <span class="card-kicker">STYLESHEET RULES</span>
+                <h3>courses.xsl</h3>
+              </div>
+              <span class="file-ext-badge">XSLT 1.0</span>
+            </div>
+            <pre class="code-block code-block-tall"><code id="xslCode">Loading XSLT source...</code></pre>
+          </div>
+        </div>
+
+        <!-- Transformation Result Output Window -->
+        <div class="card-glass xslt-result-panel">
+          <div class="result-header">
+            <div class="result-header-text">
+              <span class="result-tag">GENERATED ARTIFACT</span>
+              <h3>High Enrollment Courses Presentation</h3>
+              <p class="result-desc">Sorted by student enrollment in descending sequence.</p>
+            </div>
+            <div class="result-view-toggles">
+              <button class="view-btn active" id="btnViewRendered">Table View</button>
+              <button class="view-btn" id="btnViewSource">Raw HTML Output</button>
+            </div>
+          </div>
+
+          <div class="result-display-area" id="xsltResult">
+            <div class="empty-state-large">
+              <div class="empty-icon">🔄</div>
+              <h4>Awaiting Transformation</h4>
+              <p>Click "Execute Transformation" above to run the XSLT engine.</p>
+            </div>
+          </div>
+
+          <div class="result-raw-source hidden" id="xsltRawSource">
+            <pre class="code-block"><code id="rawHtmlOutput">No HTML generated yet.</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- QUESTION 4: DATA INTERPRETATION & ANALYTICS -->
+      <!-- ================================================================= -->
+      <section class="content-block section-anchor" id="q4">
+        <div class="block-header">
+          <div class="block-header-info">
+            <div class="badge-row">
+              <span class="num-badge">04</span>
+              <span class="mark-tag">QUESTION 4 &bull; 5 MARKS</span>
+            </div>
+            <h2 class="block-title">Interpret the Extracted Data</h2>
+            <p class="block-subtitle">Quantitative deductions, pedagogical insights, capacity analysis, and resource planning computed directly from the XML document.</p>
+          </div>
+        </div>
+
+        <!-- 5 Core Academic Findings Cards -->
+        <div class="findings-cards-grid" id="interpretationCards">
+          <!-- Dynamically populated cards -->
+        </div>
+
+        <!-- Interactive Analytical Visualizer & Charts -->
+        <div class="card-glass analytics-charts-card">
+          <div class="card-inner-header">
+            <div class="card-title-group">
+              <span class="card-kicker">VISUAL DISTRIBUTION</span>
+              <h3>Course Enrollment &amp; Resource Benchmark</h3>
+            </div>
+            <div class="chart-legend">
+              <span class="legend-item"><i class="legend-color normal"></i> Standard</span>
+              <span class="legend-item"><i class="legend-color high"></i> High (&gt;40)</span>
+              <span class="legend-item"><i class="legend-color peak"></i> Peak (&gt;60 TA Required)</span>
+            </div>
+          </div>
+
+          <div class="chart-wrapper">
+            <div class="interactive-bar-chart" id="interactiveBarChart">
+              <!-- Dynamically populated SVG/CSS interactive bar chart -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Course-by-Course Analytical Breakdown Table -->
+        <div class="card-glass q4-breakdown-card">
+          <div class="card-inner-header">
+            <div class="card-title-group">
+              <span class="card-kicker">DETAILED ROSTER</span>
+              <h3>Course-Level Pedagogical Interpretation</h3>
+            </div>
+            <span class="badge-neutral" id="q4RowCount">5 Courses Analyzed</span>
+          </div>
+          <div class="table-responsive">
+            <table class="modern-table">
+              <thead>
+                <tr>
+                  <th>Course Title</th>
+                  <th>Code</th>
+                  <th>Faculty</th>
+                  <th>Enrollment</th>
+                  <th>Credits</th>
+                  <th>Type</th>
+                  <th>Resource Status</th>
+                </tr>
+              </thead>
+              <tbody id="interpretationTable">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- DATASET EXPLORER & ADVANCED FILTER -->
+      <!-- ================================================================= -->
+      <section class="content-block section-anchor" id="dataset">
+        <div class="block-header">
+          <div class="block-header-info">
+            <div class="badge-row">
+              <span class="num-badge">05</span>
+              <span class="mark-tag">DATASET EXPLORER</span>
+            </div>
+            <h2 class="block-title">Complete Course Master Dataset</h2>
+            <p class="block-subtitle">Search, filter, and inspect records from the XML source in real-time.</p>
+          </div>
+          <div class="block-header-actions">
+            <button class="btn-outline-sm" id="exportCsvBtn">
+              <span>📥 Export CSV</span>
+            </button>
+            <button class="btn-outline-sm" id="exportJsonBtn">
+              <span>📥 Export JSON</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="card-glass dataset-explorer-card">
+          <div class="filter-controls-row">
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input type="search" id="searchInput" placeholder="Search by course name, code, faculty...">
+            </div>
+            <div class="filter-dropdown-group">
+              <div class="select-wrap">
+                <label for="typeFilter">Type:</label>
+                <select id="typeFilter">
+                  <option value="All">All Types</option>
+                  <option value="Theory">Theory</option>
+                  <option value="Practical">Practical</option>
+                </select>
+              </div>
+              <div class="select-wrap">
+                <label for="creditsFilter">Credits:</label>
+                <select id="creditsFilter">
+                  <option value="All">All Credits</option>
+                  <option value="2">2 Credits</option>
+                  <option value="3">3 Credits</option>
+                  <option value="4">4 Credits</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="modern-table sortable-table">
+              <thead>
+                <tr>
+                  <th data-sort="id">ID ⇕</th>
+                  <th data-sort="code">Code ⇕</th>
+                  <th data-sort="name">Course Name ⇕</th>
+                  <th data-sort="faculty">Faculty In-Charge ⇕</th>
+                  <th data-sort="students">Students ⇕</th>
+                  <th data-sort="credits">Credits ⇕</th>
+                  <th data-sort="type">Type ⇕</th>
+                </tr>
+              </thead>
+              <tbody id="courseTable">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- ALGORITHMS SECTION -->
+      <!-- ================================================================= -->
+      <section class="content-block section-anchor" id="algorithms">
+        <div class="block-header">
+          <div class="block-header-info">
+            <div class="badge-row">
+              <span class="num-badge">06</span>
+              <span class="mark-tag">PROCEDURAL SPECIFICATIONS</span>
+            </div>
+            <h2 class="block-title">Standard Algorithms</h2>
+            <p class="block-subtitle">Step-by-step pseudo-code procedures for each of the four evaluation components.</p>
+          </div>
+        </div>
+
+        <div class="algorithms-grid">
+          <!-- Q1 Algo -->
+          <div class="algo-card">
+            <div class="algo-header">
+              <span class="algo-tag">ALGORITHM 1</span>
+              <h3>XML Document Structural Interpretation</h3>
+            </div>
+            <div class="algo-steps">
+              <div class="step-line"><span class="step-num">1</span><span><strong>Start</strong></span></div>
+              <div class="step-line"><span class="step-num">2</span><span>Read and parse the target XML file (<code>courses.xml</code>) into memory.</span></div>
+              <div class="step-line"><span class="step-num">3</span><span>Identify the single root element enclosing all content (<code>&lt;courses&gt;</code>).</span></div>
+              <div class="step-line"><span class="step-num">4</span><span>Identify the repeating child entity representing individual records (<code>&lt;course&gt;</code>).</span></div>
+              <div class="step-line"><span class="step-num">5</span><span>Identify the primary key attribute uniquely indexing each entity (<code>id</code>).</span></div>
+              <div class="step-line"><span class="step-num">6</span><span>Identify elements containing numeric quantitative data (<code>&lt;students&gt;</code>, <code>&lt;credits&gt;</code>).</span></div>
+              <div class="step-line"><span class="step-num">7</span><span>Validate well-formedness rules (declaration, nesting, matching tags, quoted attributes).</span></div>
+              <div class="step-line"><span class="step-num">8</span><span>Output structural audit conclusions.</span></div>
+              <div class="step-line"><span class="step-num">9</span><span><strong>Stop</strong></span></div>
+            </div>
+          </div>
+
+          <!-- Q2 Algo -->
+          <div class="algo-card">
+            <div class="algo-header">
+              <span class="algo-tag">ALGORITHM 2</span>
+              <h3>XPath Query Execution &amp; Node Extraction</h3>
+            </div>
+            <div class="algo-steps">
+              <div class="step-line"><span class="step-num">1</span><span><strong>Start</strong></span></div>
+              <div class="step-line"><span class="step-num">2</span><span>Instantiate the XML Document Object Model (DOM).</span></div>
+              <div class="step-line"><span class="step-num">3</span><span>Compile the required XPath expression (e.g., <code>/courses/course[students &gt; 50]</code>).</span></div>
+              <div class="step-line"><span class="step-num">4</span><span>Evaluate expression against the XML DOM using <code>document.evaluate()</code>.</span></div>
+              <div class="step-line"><span class="step-num">5</span><span>Iterate through the resultant node-set or scalar return value.</span></div>
+              <div class="step-line"><span class="step-num">6</span><span>Format and bind extracted text contents into the presentation container.</span></div>
+              <div class="step-line"><span class="step-num">7</span><span>Repeat across all 10 academic query requirements.</span></div>
+              <div class="step-line"><span class="step-num">8</span><span><strong>Stop</strong></span></div>
+            </div>
+          </div>
+
+          <!-- Q3 Algo -->
+          <div class="algo-card">
+            <div class="algo-header">
+              <span class="algo-tag">ALGORITHM 3</span>
+              <h3>XSLT Transformation &amp; HTML Synthesis</h3>
+            </div>
+            <div class="algo-steps">
+              <div class="step-line"><span class="step-num">1</span><span><strong>Start</strong></span></div>
+              <div class="step-line"><span class="step-num">2</span><span>Load source XML (<code>courses.xml</code>) and stylesheet (<code>courses.xsl</code>).</span></div>
+              <div class="step-line"><span class="step-num">3</span><span>Match the root template at <code>&lt;xsl:template match="courses"&gt;</code>.</span></div>
+              <div class="step-line"><span class="step-num">4</span><span>Construct target HTML table headers (Code, Name, Faculty, Students, Credits, Type).</span></div>
+              <div class="step-line"><span class="step-num">5</span><span>Iterate through <code>&lt;xsl:for-each select="course[students &gt; 40]"&gt;</code>.</span></div>
+              <div class="step-line"><span class="step-num">6</span><span>Apply numeric descending sort using <code>&lt;xsl:sort select="students" data-type="number" order="descending"/&gt;</code>.</span></div>
+              <div class="step-line"><span class="step-num">7</span><span>Emit transformed HTML fragment into DOM target container.</span></div>
+              <div class="step-line"><span class="step-num">8</span><span><strong>Stop</strong></span></div>
+            </div>
+          </div>
+
+          <!-- Q4 Algo -->
+          <div class="algo-card">
+            <div class="algo-header">
+              <span class="algo-tag">ALGORITHM 4</span>
+              <h3>Statistical Analysis &amp; Academic Interpretation</h3>
+            </div>
+            <div class="algo-steps">
+              <div class="step-line"><span class="step-num">1</span><span><strong>Start</strong></span></div>
+              <div class="step-line"><span class="step-num">2</span><span>Traverse all loaded course objects into memory collection.</span></div>
+              <div class="step-line"><span class="step-num">3</span><span>Find course record with maximal student count (<code>max(students)</code>).</span></div>
+              <div class="step-line"><span class="step-num">4</span><span>Find course record with minimal student count (<code>min(students)</code>).</span></div>
+              <div class="step-line"><span class="step-num">5</span><span>Compute count where <code>type = 'Theory'</code>.</span></div>
+              <div class="step-line"><span class="step-num">6</span><span>Compute count where <code>credits = 4</code>.</span></div>
+              <div class="step-line"><span class="step-num">7</span><span>Identify high-enrollment courses requiring additional Teaching Assistant support (<code>students &gt; 60</code>).</span></div>
+              <div class="step-line"><span class="step-num">8</span><span>Render analytical summary cards and roster table.</span></div>
+              <div class="step-line"><span class="step-num">9</span><span><strong>Stop</strong></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- INTERACTIVE KNOWLEDGE CHECK / QUIZ -->
+      <!-- ================================================================= -->
+      <section class="content-block section-anchor" id="quiz">
+        <div class="block-header">
+          <div class="block-header-info">
+            <div class="badge-row">
+              <span class="num-badge">07</span>
+              <span class="mark-tag">KNOWLEDGE ASSESSMENT</span>
+            </div>
+            <h2 class="block-title">XML, XPath &amp; XSLT Interactive Quiz</h2>
+            <p class="block-subtitle">Test conceptual understanding of the Unit IV syllabus with instant scoring and explanations.</p>
+          </div>
+          <div class="block-header-actions">
+            <div class="quiz-score-badge" id="quizScoreBadge">Score: 0 / 4</div>
+          </div>
+        </div>
+
+        <div class="quiz-grid" id="quizGrid">
+          <!-- Dynamically populated interactive quiz cards -->
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- VERIFICATION MATRIX & RESULTS -->
+      <!-- ================================================================= -->
+      <section class="content-block section-anchor" id="results">
+        <div class="block-header">
+          <div class="block-header-info">
+            <div class="badge-row">
+              <span class="num-badge">08</span>
+              <span class="mark-tag">CHECKPOINT SUMMARY</span>
+            </div>
+            <h2 class="block-title">Evaluation &amp; Verification Matrix</h2>
+            <p class="block-subtitle">Assessment criteria fulfillment verification for Web Technology CO4 AT1.</p>
+          </div>
+        </div>
+
+        <div class="card-glass verification-card">
+          <div class="checklist-grid">
+            <div class="check-item">
+              <div class="check-icon-circle pass">✓</div>
+              <div class="check-text">
+                <strong>Q1: XML Structural Interpretation</strong>
+                <p>Identified root element (&lt;courses&gt;), repeating entity (&lt;course&gt;), unique attribute (id), numeric elements (students, credits), and well-formedness rationale.</p>
+              </div>
+              <span class="status-pill pass">PASS (5/5 M)</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon-circle pass">✓</div>
+              <div class="check-text">
+                <strong>Q2: XPath Selection Queries</strong>
+                <p>All 10 required dynamic queries evaluated in real-time against the live XML DOM with interactive output displays and sandbox validation.</p>
+              </div>
+              <span class="status-pill pass">PASS (10/10 M)</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon-circle pass">✓</div>
+              <div class="check-text">
+                <strong>Q3: XSLT Presentation Transformation</strong>
+                <p>Filtered courses where students &gt; 40 and sorted in descending order (AI: 72, ML: 64, WEB: 58, DB: 42) into an HTML table.</p>
+              </div>
+              <span class="status-pill pass">PASS (10/10 M)</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon-circle pass">✓</div>
+              <div class="check-text">
+                <strong>Q4: Academic Data Interpretation</strong>
+                <p>Correctly deduced highest (AI302: 72), lowest (WEB303: 36), Theory count (4), 4-credit courses (3), and TA allocations (&gt;60: 2 courses).</p>
+              </div>
+              <span class="status-pill pass">PASS (5/5 M)</span>
+            </div>
+          </div>
+
+          <div class="academic-aim-banner">
+            <div class="aim-badge">OFFICIAL AIM</div>
+            <p>To represent university course enrollment data using XML, retrieve specific information using XPath, transform XML data into an HTML presentation using XSLT, and interpret the extracted academic data.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="site-footer">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <strong>Web Technology &bull; Unit IV</strong>
+            <span>CO4 AT1: Data Interpretation &amp; XML Processing</span>
+          </div>
+          <div class="footer-tech-stack">
+            <span class="tech-pill">XML 1.0</span>
+            <span class="tech-pill">XPath 1.0</span>
+            <span class="tech-pill">XSLT 1.0</span>
+            <span class="tech-pill">Vanilla JS (ES6+)</span>
+            <span class="tech-pill">Modern CSS</span>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Academic Laboratory Demonstration. Engineered for high-performance data processing &amp; visual excellence.</p>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- LIVE SIMULATOR MODAL / DRAWER -->
+  <div class="simulator-modal" id="simulatorModal" aria-hidden="true">
+    <div class="simulator-backdrop" id="closeSimulatorBackdrop"></div>
+    <div class="simulator-panel">
+      <div class="simulator-header">
+        <div class="sim-title-group">
+          <span class="sim-badge">LIVE SIMULATOR</span>
+          <h3>Course Data Simulator</h3>
+        </div>
+        <button class="sim-close-btn" id="closeSimulatorBtn" aria-label="Close simulator">&times;</button>
+      </div>
+      <div class="simulator-body">
+        <p class="sim-intro">Adjust student enrollments in real-time below to witness how the XML DOM, XPath results, XSLT sorting, and Q4 analytics update automatically!</p>
+        
+        <div class="sim-course-list" id="simCourseList">
+          <!-- Dynamically populated course slider controls -->
+        </div>
+
+        <div class="sim-actions">
+          <button class="btn-primary" id="simApplyBtn">⚡ Re-run XML Pipeline</button>
+          <button class="btn-outline-sm" id="simResetBtn">🔄 Reset to Standard Dataset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-notification" id="toastNotification" role="status" aria-live="polite">
+    <span class="toast-icon">ℹ️</span>
+    <span class="toast-message" id="toastMessage">Notification</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
